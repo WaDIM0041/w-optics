@@ -133,6 +133,7 @@
         .hero-benefits li { display: flex; align-items: center; gap: 8px; font-weight: 500; color: var(--primary); }
 
         section { padding: 80px 0; }
+        section[id] { scroll-margin-top: 70px; }
         h2 {
             font-size: 2.5rem;
             text-align: center;
@@ -253,11 +254,30 @@
         footer a { color: var(--primary); text-decoration: none; }
 
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            .problem-grid, .showcase-grid, .steps-grid, .reviews { grid-template-columns: 1fr; }
+            header { padding: 8px 0; }
+            .logo { height: 30px; }
             .nav-links a { display: none; }
+            .hero { height: auto; min-height: 100vh; padding-top: 80px; padding-bottom: 40px; }
+            .hero-content { padding-top: 60px; }
+            .hero-content h1 { font-size: 2rem; line-height: 1.25; }
+            .hero-content p { font-size: 1.1rem; margin-bottom: 20px; }
+            .hero-benefits { gap: 15px; margin-top: 20px; }
+            .hero-benefits li { font-size: 0.95rem; }
+            .btn { padding: 12px 30px; font-size: 1rem; }
+            .problem-grid, .showcase-grid, .steps-grid, .reviews { grid-template-columns: 1fr; }
             .showcase-img { height: 300px; }
             .glass-card { padding: 15px; }
+            section { padding: 60px 0; }
+            h2 { font-size: 1.8rem; margin-bottom: 30px; }
+            .price-tag { font-size: 2.2rem; }
+            .form-box { padding: 25px; }
+            .step-num { width: 50px; height: 50px; font-size: 1.5rem; }
+            .stat-item h3 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content h1 { font-size: 1.7rem; }
+            .hero-content { padding-top: 40px; }
         }
     </style>
 </head>
