@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W OPTICS — Солнцезащитные очки для зрения 2 в 1 (Магнитная насадка)</title>
+    <meta name="description" content="Солнцезащитные очки для зрения с антибликовым покрытием. Очки 2 в 1 с магнитной насадкой для водителей и спорта. Мощные неодимовые магниты.">
+    <style>
+        :root {
+            --primary: #00a8e8;
+            --accent: #005f73;
+            --dark: #050a14;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text: #e0e6ed;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #050a14 0%, #0a1525 100%);
+        }
+
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        header {
+            background: rgba(5, 10, 20, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(0, 168, 232, 0.2);
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { height: 40px; filter: brightness(1.2); }
+        .nav-links a { text-decoration: none; color: var(--text); margin-left: 20px; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .banner-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+        }
+        .banner-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 6s ease-out;
+            transform: scale(1.1);
+        }
+        .banner-img.visible { opacity: 0.8; transform: scale(1); }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(5,10,20,0.8) 80%);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0,168,232,0.6);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #ccc;
+        }
+        .btn {
+            background: linear-gradient(45deg, var(--primary), #0077b6);
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0,168,232,0.4);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0,168,232,0.8);
+        }
+        .hero-benefits {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .hero-benefits li { display: flex; align-items: center; gap: 8px; font-weight: 500; color: var(--primary); }
+
+        section { padding: 80px 0; }
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #fff;
+            font-weight: 700;
+        }
+        .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .problem-text p { margin-bottom: 20px; font-size: 1.1rem; color: #ccc; }
+        .problem-text strong { color: #ff6b6b; }
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .showcase-card {
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+        }
+        .showcase-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,168,232,0.2);
+            border-color: var(--primary);
+        }
+        .showcase-img { width: 100%; height: 400px; object-fit: cover; background: #111; }
+        .showcase-text { padding: 30px; }
+        .showcase-text h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.5rem; }
+        .showcase-text p { color: #ccc; margin-bottom: 15px; }
+
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .step-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .step-num {
+            width: 60px; height: 60px;
+            background: linear-gradient(45deg, var(--primary), #0077b6);
+            color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; margin: 0 auto 20px; font-weight: bold;
+            box-shadow: 0 0 15px rgba(0,168,232,0.5);
+        }
+        .step-item h3 { margin-bottom: 10px; color: #fff; }
+
+        .stats { display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 20px; margin-bottom: 50px; }
+        .stat-item h3 { font-size: 3rem; color: var(--primary); margin-bottom: 5px; }
+        .stat-item p { font-size: 1.1rem; color: #aaa; }
+        .reviews { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .review-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+        .review-card p { font-style: italic; margin-bottom: 15px; color: #ddd; }
+        .review-author { font-weight: bold; color: var(--primary); }
+
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--card-bg);
+        }
+        .faq-q { padding: 20px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; align-items: center; color: #fff; }
+        .faq-q:hover { color: var(--primary); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 20px; color: #ccc; }
+        .faq-item.active .faq-a { padding: 0 20px 20px; max-height: 300px; }
+        .faq-item.active .faq-q { color: var(--primary); }
+        .faq-item.active .faq-q::after { content: "-"; font-size: 1.5rem; }
+        .faq-q::after { content: "+"; font-size: 1.5rem; }
+
+        .offer { text-align: center; background: rgba(0, 168, 232, 0.05); border-top: 1px solid rgba(0, 168, 232, 0.2); border-bottom: 1px solid rgba(0, 168, 232, 0.2); }
+        .price-tag { font-size: 3rem; font-weight: 800; margin: 20px 0; color: var(--primary); }
+        .old-price { text-decoration: line-through; opacity: 0.5; font-size: 1.5rem; margin-right: 15px; color: #ccc; }
+        .delivery-info { font-size: 1.1rem; color: #28a745; font-weight: 600; margin-bottom: 20px; }
+        .countdown { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; color: #ff6b6b; font-weight: bold; }
+
+        .form-box { max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.08); padding: 40px; border-radius: 12px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #fff; }
+        .form-group input {
+            width: 100%; padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px; font-size: 1rem; color: #fff;
+            transition: all 0.3s;
+        }
+        .form-group input::placeholder { color: #666; }
+        .form-group input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 10px rgba(0,168,232,0.3); }
+        .success-msg { display: none; background: rgba(40, 167, 69, 0.2); color: #28a745; padding: 15px; border-radius: 6px; margin-top: 15px; text-align: center; font-weight: 500; border: 1px solid #28a745; }
+        .btn-submit { width: 100%; background: linear-gradient(45deg, var(--primary), #0077b6); color: #fff; padding: 15px; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .btn-submit:hover { box-shadow: 0 0 20px rgba(0,168,232,0.6); }
+
+        footer { background: #000; color: #666; padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer a { color: var(--primary); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .problem-grid, .showcase-grid, .steps-grid, .reviews { grid-template-columns: 1fr; }
+            .nav-links a { display: none; }
+            .showcase-img { height: 300px; }
+            .glass-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <header>
+        <div class="container nav">
+            <img src="assets/images/logo.png" alt="W Optics Logo" class="logo">
+            <div class="nav-links">
+                <a href="#problem">Проблема</a>
+                <a href="#solution">Продукт</a>
+                <a href="#faq">Вопросы</a>
+                <a href="#order">Заказать</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="banner-container">
+            <img id="banner1" src="assets/images/banner1.png" class="banner-img" alt="Банер 1">
+            <img id="banner2" src="assets/images/banner2.png" class="banner-img" alt="Банер 2">
+        </div>
+        <div class="hero-overlay" data-nav-click-skip></div>
+        <div class="hero-content">
+            <h1>Солнцезащитные очки для зрения 2 в 1: Ваше идеальное зрение и защита</h1>
+            <p>Больше никаких двух пар очков. Магнитная насадка с антибликовым покрытием спасет ваши глаза на дороге и на склоне.</p>
+            <a href="#order" class="btn">Оформить предзаказ со скидкой 20%</a>
+            <ul class="hero-benefits">
+                <li>✓ Экономия денег (2 в 1)</li>
+                <li>✓ Смена за 1 секунду</li>
+                <li>✓ Защита UV400 и от бликов</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="problem">
+        <div class="container">
+            <h2 class="fade-in">Знакомая ситуация?</h2>
+            <div class="problem-grid">
+                <div class="problem-text fade-in">
+                    <p>Вы носите очки для зрения. На солнце приходится щуриться, а надевать солнцезащитные очки поверх обычных — неудобно и выглядит нелепо.</p>
+                    <p>Заказывать очки с диоптриями и тонировкой — <strong>дорого</strong>, а для вождения ночью они вообще не подходят. При активном отдыхе (велосипед, горные лыжи) обычные очки слетают, а солнце слепит глаза.</p>
+                    <p>Хочется просто видеть четко, не страдать от яркого света и бликов встречных фар, и при этом выглядеть стильно.</p>
+                </div>
+                <div class="fade-in glass-card">
+                    <img src="https://images.unsplash.com/photo-1577803645773-f96470509666?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Проблема с обычными очками" style="border-radius: 12px; width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div class="container">
+            <h2 class="fade-in">Решение: Очки W OPTICS 2 в 1</h2>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem; color: #ccc;">Основа с вашими диоптриями и магнитная насадка с антибликовым покрытием. Идеально для водителей и спорта.</p>
+
+            <div class="showcase-grid">
+                <div class="showcase-card fade-in">
+                    <img src="assets/images/base-glasses.png" alt="Основа Очки с диоптриями" class="showcase-img">
+                    <div class="showcase-text">
+                        <h3>Основа: Очки с диоптриями</h3>
+                        <p>Легкая и прочная оправа. Возможность заказать линзы с любыми диоптриями специально под ваше зрение.</p>
+                        <p>Комфортная посадка для ежедневного использования: от работы за компьютером до вечерней прогулки.</p>
+                    </div>
+                </div>
+                <div class="showcase-card fade-in">
+                    <img src="assets/images/sun-antiglare.png" alt="Солнцезащитная магнитная насадка" class="showcase-img">
+                    <div class="showcase-text">
+                        <h3>Насадка: Антиблик + UV400</h3>
+                        <p>Линзы с покрытием от бликов — настоящее спасение для водителей с плохим зрением. Встречные фары больше не ослепляют.</p>
+                        <p>Мощные неодимовые магниты надежно держат насадку при любых нагрузках: велосипед, горные лыжи, бег и активный спорт.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps">
+        <div class="container">
+            <h2 class="fade-in">Как это работает</h2>
+            <div class="steps-grid">
+                <div class="step-item fade-in">
+                    <div class="step-num">1</div>
+                    <h3>Заказываете основу</h3>
+                    <p>Указываете свои диоптрии. Мы изготавливаем линзы индивидуально для вас.</p>
+                </div>
+                <div class="step-item fade-in">
+                    <div class="step-num">2</div>
+                    <h3>Получаете комплект</h3>
+                    <p>Очки для зрения + магнитная солнцезащитная насадка в стильном чехле.</p>
+                </div>
+                <div class="step-item fade-in">
+                    <div class="step-num">3</div>
+                    <h3>Меняем за 1 секунду</h3>
+                    <p>На солнце — крепите насадку. В помещении — снимаете. Магниты делают все сами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="fade-in">Почему нам доверяют</h2>
+            <div class="stats fade-in">
+                <div class="stat-item"><h3>1500+</h3><p>Довольных клиентов</p></div>
+                <div class="stat-item"><h3>4.9★</h3><p>Средняя оценка</p></div>
+                <div class="stat-item"><h3>15k ₽</h3><p>Средняя экономия</p></div>
+            </div>
+            <div class="reviews">
+                <div class="review-card fade-in">
+                    <p>"Работаю таксистом, за рулем с утра до ночи. Раньше мучился: надо и дорогу хорошо видеть, и от солнца прятаться, а оно еще и бликами на лобовом стекле отсвечивало так, что глаза уставали. С этими очками проблема решена! Диоптрии дают четкое зрение, а магнитная насадка спасает от солнца и убирает блики. Стал видеть дорогу идеально в любую погоду. Рекомендую всем водителям!"</p>
+                    <div class="review-author">Сергей, 45 лет</div>
+                </div>
+                <div class="review-card fade-in">
+                    <p>"Солнце вышло — насадка на месте за секунду. Темно в помещении — снял одним движением. Вожу машину, гоняю на велике, хожу пешком. Держатся намертво, зрение в них теперь идеальное в любой ситуации."</p>
+                    <div class="review-author">Алексей, 34 года</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="steps">
+        <div class="container">
+            <h2 class="fade-in">Ответы на вопросы</h2>
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-q">Не сломаются ли магниты при занятии спортом?</div>
+                    <div class="faq-a">Нет, мы используем мощные неодимовые магниты. Они выдерживают сильную тряску, прыжки и активные движения (бег, лыжи, велосипед).</div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-q">Можно ли заказать свои диоптрии?</div>
+                    <div class="faq-a">Да, основа изготавливается индивидуально под ваше зрение. Просто укажите параметры в форме заказа.</div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-q">Дорого ли это по сравнению с покупкой двух пар?</div>
+                    <div class="faq-a">Наоборот, вы экономите. Вам не нужно покупать отдельные солнцезащитные очки с диоптриями (которые стоят очень дорого) и обычные. Комплект 2 в 1 выходит значительно дешевле.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="offer">
+        <div class="container">
+            <h2 class="fade-in">Оформите предзаказ сегодня</h2>
+            <p class="fade-in" style="color: #ccc;">Скидка 20% на первые 50 заказов. Успейте забрать по спеццене!</p>
+            <div class="price-tag fade-in"><span class="old-price">4 990 ₽</span>от 2 990 ₽</div>
+            <p class="delivery-info fade-in">🎁 Бесплатная доставка по городу СПб при заказе от двух пар</p>
+            <p class="countdown fade-in">Осталось мест по акции: 12</p>
+
+            <div class="form-box fade-in">
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="diopter">Ваши диоптрии (необязательно)</label>
+                        <input type="text" id="diopter" name="diopter" placeholder="Например: -2.5 на оба глаза">
+                    </div>
+                    <button type="submit" class="btn-submit">Оформить предзаказ</button>
+                    <div class="success-msg" id="successMsg" role="status" aria-live="polite">Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 W OPTICS. Все права защищены.</p>
+            <p><a href="#">Политика конфиденциальности</a> | <a href="#">Договор оферты</a></p>
+        </div>
+    </footer>
+
+    <script>
+        'use strict';
+
+        // --- АНИМАЦИЯ ФОНА (ЭФФЕКТ МЫШКИ) ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let particles = [];
+        const mouse = { x: null, y: null, radius: 150 };
+
+        // Проверка контекста canvas — если он недоступен, просто пропускаем.
+        function initCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            const numParticles = Math.max(20, Math.min(120, Math.floor((width * height) / 15000)));
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    size: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        // Если контекст canvas недоступен, оставляем статичный фон без ошибок.
+        let animationRunning = false;
+        function drawCanvas() {
+            if (!ctx || !particles) {
+                animationRunning = false;
+                return;
+            }
+            ctx.clearRect(0, 0, width, height);
+
+            for (let p of particles) {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                if (mouse.x !== null && mouse.y !== null) {
+                    let dx = mouse.x - p.x;
+                    let dy = mouse.y - p.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < mouse.radius) {
+                        let force = (mouse.radius - dist) / mouse.radius;
+                        p.x += dx * force * 0.05;
+                        p.y += dy * force * 0.05;
+                    }
+                }
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 168, 232, 0.6)';
+                ctx.fill();
+            }
+
+            // Ограничиваем количество линий, чтобы не было лагов на больших экранах.
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 168, 232, ${Math.max(0, 0.15 - dist/800)})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+            }
+            animationRunning = true;
+            requestAnimationFrame(drawCanvas);
+        }
+
+        // Уважение к персональным настройкам пользователя (уменьшенное движение)
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        initCanvas();
+        if (!prefersReducedMotion && ctx) {
+            drawCanvas();
+        }
+
+        if (!prefersReducedMotion) {
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+            window.addEventListener('mouseout', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+        }
+        window.addEventListener('resize', initCanvas);
+
+        // --- АНИМАЦИЯ БАННЕРА ---
+        (function() {
+            const banner1 = document.getElementById('banner1');
+            const banner2 = document.getElementById('banner2');
+            if (!banner1 || !banner2) return;
+            let currentBanner = 1;
+
+            function cycleBanners() {
+                if (prefersReducedMotion) {
+                    banner1.classList.add('visible');
+                    return;
+                }
+                if (currentBanner === 1) {
+                    banner1.classList.add('visible');
+                    banner2.classList.remove('visible');
+                    currentBanner = 2;
+                    setTimeout(cycleBanners, 4000);
+                } else {
+                    banner1.classList.remove('visible');
+                    banner2.classList.add('visible');
+                    currentBanner = 1;
+                    setTimeout(cycleBanners, 4000);
+                }
+            }
+            setTimeout(cycleBanners, 500);
+        })();
+
+        // --- ПЛАВНОЕ ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ ПРИ СКРОЛЛЕ ---
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Анимация срабатывает один раз — нет смысла следить дальше.
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            observerOptions
+        );
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // --- FAQ АККОРДЕОН ---
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('active');
+            });
+        });
+
+        // --- ПЛАВНАЯ ПРОКрутка по якорным ссылкам ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#' || !targetId) return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // --- ОТПРАВКА ФОРМЫ ---
+        const orderForm = document.getElementById('orderForm');
+        if (orderForm) {
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const successMsg = document.getElementById('successMsg');
+                if (successMsg) {
+                    successMsg.style.display = 'block';
+                }
+                // Базовая валидация: проверка российского телефона
+                try {
+                    const phone = document.getElementById('phone').value.replace(/\D/g, '');
+                    if (phone.length < 10) {
+                        if (successMsg) successMsg.style.display = 'none';
+                        alert('Пожалуйста, введите корректный номер телефона.');
+                        return;
+                    }
+                    this.reset();
+                    setTimeout(() => {
+                        if (successMsg) successMsg.style.display = 'none';
+                    }, 5000);
+                } catch (err) {
+                    console.error('Ошибка валидации формы:', err);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
