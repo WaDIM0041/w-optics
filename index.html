@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>W OPTICS — Очки 2 в 1 (Магнитная насадка)</title>
     <meta name="description" content="Солнцезащитные очки для зрения с антибликовым покрытием. Очки 2 в 1 с магнитной насадкой для водителей и спорта.">
+    <meta name="theme-color" content="#050510" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/png" href="assets/images/logo.webp" />
+    <link rel="apple-touch-icon" href="assets/images/logo.webp" />
+    <link rel="canonical" href="https://woptic.annakam.ru/">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="W OPTICS" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="W OPTICS — очки 2 в 1 с магнитной насадкой">
+    <meta property="og:description" content="Одна оправа — два режима: очки для зрения и солнцезащитные очки с магнитной насадкой.">
+    <meta property="og:image" content="https://woptic.annakam.ru/assets/images/banner1-v2.webp">
+    <meta property="og:url" content="https://woptic.annakam.ru/">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "W OPTICS — очки 2 в 1 с магнитной насадкой",
+      "description": "Очки для зрения с магнитной солнцезащитной насадкой и антибликовым покрытием.",
+      "brand": { "@type": "Brand", "name": "W OPTICS" },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "price": "2990",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Unbounded:wght@400;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -85,18 +113,8 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* PROBLEM & TOGGLE */
-        .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .problem-grid { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; max-width: 900px; }
         .problem-text p { margin-bottom: 25px; font-size: 1.2rem; color: var(--text-muted); }
-        .glass-card { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); padding: 40px; text-align: center; }
-        .toggle-wrapper { margin: 30px 0; }
-        .toggle-label { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .toggle-switch { position: relative; display: inline-block; width: 100px; height: 50px; }
-        .toggle-switch input { opacity: 0; width: 0; height: 0; }
-        .slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255,255,255,0.1); border: 2px solid var(--text-muted); transition: .4s; border-radius: 50px; }
-        .slider-toggle:before { position: absolute; content: "MAGNET"; height: 36px; width: 36px; left: 4px; bottom: 4px; background-color: var(--primary); transition: .4s; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: bold; color: #000; font-family: 'JetBrains Mono', monospace; }
-        input:checked + .slider-toggle { border-color: var(--primary); background-color: rgba(0, 242, 255, 0.1); }
-        input:checked + .slider-toggle:before { transform: translateX(50px); content: "ON"; background-color: #fff; }
-        .toggle-status { margin-top: 15px; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--text); }
 
         /* SOLUTION */
         .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
@@ -141,6 +159,7 @@
         .old-price { text-decoration: line-through; opacity: 0.3; font-size: 0.5em; margin-right: 20px; color: var(--text-muted); }
         .delivery-info { font-size: 1.2rem; color: var(--primary); font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em; }
         .countdown { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; color: #ff4d4d; font-weight: 700; }
+        .life-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); border: 1px solid var(--primary); border-radius: 50px; padding: 5px 14px; margin-bottom: 14px; }
 
         /* POPUP FORM */
         .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 16, 0.9); backdrop-filter: blur(15px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
@@ -158,14 +177,74 @@
         .btn-submit { width: 100%; background: #fff; color: #000; padding: 18px; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: 'Unbounded', sans-serif; }
         .btn-submit:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
+        /* ORDER WIZARD (3 шага: диоптрии → данные → оплата) */
+        .popup-content { max-height: 92vh; overflow-y: auto; }
+        .osteps { display: flex; gap: 8px; margin-bottom: 24px; }
+        .osteps span { flex: 1; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.12); border-radius: 50px; padding: 8px 4px; transition: all 0.3s; }
+        .osteps span.on { color: #000; background: var(--primary); border-color: var(--primary); font-weight: 700; }
+        .ostep { display: none; }
+        .ostep.on { display: block; animation: ostFade 0.35s ease; }
+        @keyframes ostFade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+        .dio-hint { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; text-align: center; }
+        .dio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+        .dio-card { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px 8px; text-align: center; }
+        .dio-card small { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+        .dio-row { display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .dio-btn { width: 44px; height: 44px; flex: none; border-radius: 12px; border: 1px solid rgba(0,242,255,0.5); background: rgba(0,242,255,0.08); color: var(--primary); font-size: 1.4rem; font-weight: 700; line-height: 1; cursor: pointer; transition: all 0.25s; font-family: 'JetBrains Mono', monospace; }
+        .dio-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 18px rgba(0,242,255,0.4); }
+        .dio-btn:active { transform: scale(0.93); }
+        .dio-val { min-width: 80px; font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; color: #fff; }
+        .dio-unit { display: block; margin-top: 10px; font-size: 0.72rem; color: var(--text-muted); }
+        .dio-same { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; cursor: pointer; user-select: none; }
+        .dio-same input { accent-color: var(--primary); width: 16px; height: 16px; }
+        .opt-list label { display: flex; align-items: flex-start; gap: 10px; padding: 13px 15px; border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: all 0.25s; font-size: 0.9rem; color: var(--text); background: rgba(0,0,0,0.25); font-weight: 400; }
+        .opt-list label:has(input:checked) { border-color: var(--primary); background: rgba(0,242,255,0.08); }
+        .opt-list input { accent-color: var(--primary); margin-top: 3px; }
+        textarea.o-field { width: 100%; box-sizing: border-box; padding: 15px 18px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-size: 0.95rem; color: #fff; font-family: 'Inter', sans-serif; resize: vertical; transition: all 0.3s; }
+        textarea.o-field:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 20px rgba(0,242,255,0.2); }
+        .qty-line { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+        .qty-line label { margin-bottom: 0; }
+        .qty-line .dio-row { gap: 14px; }
+        .o-summary { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 6px 18px; margin-bottom: 20px; text-align: left; }
+        .o-summary div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px dashed rgba(255,255,255,0.1); font-size: 0.9rem; }
+        .o-summary div:last-child { border-bottom: none; }
+        .o-summary span { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; flex: none; }
+        .o-summary b { color: #fff; font-weight: 600; text-align: right; }
+        .o-summary .o-total b { color: var(--primary); font-size: 1.05rem; }
+        .o-nav { display: flex; gap: 12px; margin-top: 8px; }
+        .o-nav .btn-submit { flex: 1; }
+        .o-back { background: transparent; border: 1px solid rgba(255,255,255,0.25); color: var(--text-muted); border-radius: 12px; padding: 18px 20px; cursor: pointer; font-size: 0.95rem; font-family: 'Inter', sans-serif; transition: all 0.25s; }
+        .o-back:hover { border-color: var(--primary); color: var(--primary); }
+        .o-err { min-height: 1.2em; margin-top: 12px; text-align: center; color: #ff6b6b; font-size: 0.85rem; }
+        .o-ok { background: rgba(0,242,255,0.08); border: 1px solid rgba(0,242,255,0.4); color: var(--primary); border-radius: 12px; padding: 12px; text-align: center; font-size: 0.88rem; margin-bottom: 16px; }
+        .pay-box { text-align: center; }
+        .qr-wrap { background: #fff; border-radius: 16px; padding: 14px; display: inline-block; margin: 6px auto 14px; }
+        .qr-wrap img { width: 210px; height: 210px; display: block; border-radius: 6px; }
+        .qr-miss { width: 210px; height: 210px; display: grid; place-items: center; text-align: center; border: 2px dashed #0a7f8a; color: #0a7f8a; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.6; border-radius: 6px; box-sizing: border-box; padding: 10px; }
+        .pay-oid { display: inline-block; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.1em; color: var(--primary); border: 1px dashed var(--primary); border-radius: 8px; padding: 6px 14px; margin: 6px 0 14px; }
+        .pay-sum { font-family: 'JetBrains Mono', monospace; font-size: 1.7rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+        .pay-note { font-size: 0.85rem; color: var(--text-muted); margin: 8px 0; line-height: 1.5; }
+        .pay-note b { color: #fff; }
+        .tg-pay { display: inline-block; margin-top: 12px; padding: 13px 30px; border: 1px solid var(--primary); border-radius: 50px; color: var(--primary); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; transition: all 0.3s; }
+        .tg-pay:hover { background: var(--primary); color: #000; box-shadow: 0 0 25px rgba(0,242,255,0.4); }
+        .o-fallback textarea { width: 100%; box-sizing: border-box; background: rgba(0,0,0,0.4); border: 1px dashed rgba(255,255,255,0.3); color: #cfd8dc; border-radius: 12px; padding: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.5; min-height: 150px; resize: vertical; margin-bottom: 10px; }
+        .o-copy { width: 100%; padding: 13px; background: transparent; border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 12px; cursor: pointer; font-size: 0.88rem; transition: all 0.25s; margin-bottom: 10px; }
+        .o-copy:hover { border-color: var(--primary); color: var(--primary); }
+
         /* BOTTOM NAV (DOCK) */
         .bottom-nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(5, 5, 16, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50px; padding: 10px 20px; display: flex; gap: 10px; z-index: 90; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .nav-item { padding: 10px 20px; text-decoration: none; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; border-radius: 40px; transition: all 0.3s; position: relative; }
         .nav-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .nav-item.active { color: #000; background: var(--primary); }
 
+        /* TOP BUTTON */
+        .to-top { position: fixed; right: 24px; bottom: 110px; z-index: 95; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: rgba(5, 5, 16, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(0, 242, 255, 0.5); color: var(--primary); font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; cursor: pointer; box-shadow: 0 0 20px rgba(0, 242, 255, 0.15); opacity: 0; visibility: hidden; transform: translateY(20px); transition: opacity 0.35s ease, transform 0.35s ease, background 0.3s, color 0.3s, box-shadow 0.3s; }
+        .to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .to-top:hover { background: var(--primary); color: #000; box-shadow: 0 0 30px rgba(0, 242, 255, 0.5); }
+        .to-top:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+
         /* FOOTER (FOOTER.DESIGN REF) */
-        footer { background: #000; padding: 80px 0 40px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 3; }
+        footer { background: #000; padding: 80px 0 150px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 3; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 80px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; }
         .footer-col h4 { font-family: 'JetBrains Mono', monospace; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
         .footer-col ul { list-style: none; }
@@ -176,6 +255,16 @@
         .footer-desc { color: var(--text-muted); font-size: 0.9rem; max-width: 300px; }
         .footer-heading { font-family: 'Unbounded', sans-serif; font-size: clamp(4rem, 15vw, 12rem); font-weight: 900; text-align: center; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); line-height: 1; letter-spacing: -0.02em; }
         .footer-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+        .footer-credit { margin-top: 26px; padding-top: 22px; border-top: 1px dashed rgba(0,242,255,.16); display: flex; justify-content: center; }
+        .ak-badge { display: inline-flex; align-items: center; gap: 9px; padding: 6px 12px 6px 8px; border-radius: 10px; background: linear-gradient(150deg, rgba(28,22,16,.7), rgba(20,16,12,.55)); border: 1px solid rgba(0,242,255,.32); color: var(--text-muted); transition: transform .3s, border-color .3s, box-shadow .3s; text-decoration: none; }
+        .ak-badge:hover { transform: translateY(-2px); border-color: rgba(0,242,255,.7); box-shadow: 0 10px 22px rgba(0,242,255,.16); }
+        .ak-badge__mark { flex: none; width: 22px; height: 22px; display: grid; place-items: center; position: relative; transform: rotate(45deg); border-radius: 5px; background: linear-gradient(140deg, #00ccff 0%, #36e7ff 55%, #6f93ff 100%); box-shadow: 0 0 10px rgba(0,242,255,.5), inset 0 0 0 1px rgba(255,255,255,.35); }
+        .ak-badge__mark::after { content: ""; position: absolute; inset: 3px; border: 1px solid rgba(3,6,10,.45); border-radius: 3px; }
+        .ak-badge__mark-txt { transform: rotate(-45deg); font-weight: 800; font-size: .5rem; letter-spacing: .02em; color: #03060a; font-family: 'Unbounded', sans-serif; }
+        .ak-badge__text { display: flex; flex-direction: column; line-height: 1.2; }
+        .ak-badge__text small { color: var(--text-muted); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+        .ak-badge__text b { color: #d8f4ff; font-size: .78rem; font-weight: 600; letter-spacing: .01em; }
+        .ak-badge:hover .ak-badge__text b { color: var(--primary); }
 
         @media (max-width: 768px) {
             header { padding: 10px 0; }
@@ -208,10 +297,13 @@
             .faq-a { padding: 0 20px; }
             .faq-item.active .faq-a { padding: 0 20px 20px; }
             section { padding: 70px 0; }
-            .glass-card { padding: 25px; }
             .popup-content { padding: 30px 22px; }
             .popup-content h3 { font-size: 1.4rem; }
             .bottom-nav { display: none; }
+            .to-top { right: 16px; bottom: 24px; width: 46px; height: 46px; }
+            .dio-grid { grid-template-columns: 1fr; }
+            .osteps span { font-size: 0.58rem; letter-spacing: 0.03em; }
+            .qr-wrap img, .qr-miss { width: 180px; height: 180px; }
             .footer-grid { padding-bottom: 30px; margin-bottom: 50px; }
             .footer-col ul li a { font-size: 0.85rem; }
             .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
@@ -246,7 +338,7 @@
     <header>
         <div class="container nav">
             <div class="logo-container">
-                <img src="assets/images/logo.png" alt="W Optics Logo" class="logo">
+                <img src="assets/images/logo.webp" alt="W Optics Logo" class="logo">
             </div>
             <div class="nav-links">
                 <a href="#problem">Проблема</a>
@@ -260,18 +352,19 @@
     <!-- HERO -->
     <section class="hero" id="hero">
         <div class="banner-container">
-            <img id="banner1" src="assets/images/banner1.png" class="banner-img visible" alt="Банер 1">
-            <img id="banner2" src="assets/images/banner2.png" class="banner-img" alt="Банер 2">
+            <img id="banner1" src="assets/images/banner1-v2.webp" class="banner-img visible" alt="Банер 1">
+            <img id="banner2" src="assets/images/banner2-v3.webp" class="banner-img" alt="Банер 2">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Солнцезащитные очки <br><span class="glitch-wrapper"><span class="glitch" data-text="для зрения 2 в 1">для зрения 2 в 1</span></span></h1>
-            <p>Больше никаких двух пар очков. Магнитная насадка с антибликовым покрытием спасет ваши глаза на дороге и на склоне.</p>
+            <p>Больше никаких двух пар очков. Магнитная солнцезащитная насадка с антибликовым покрытием спасает глаза за рулём и на солнце.</p>
             <button class="btn" onclick="openPopup()">Оформить предзаказ</button>
             <ul class="hero-benefits">
-                <li>Экономия (2 в 1)</li>
-                <li>Смена за 1 сек</li>
-                <li>Защита UV400</li>
+                <li>2 в 1: зрение + солнце</li>
+                <li>Смена за секунду</li>
+                <li>Антиблик + UV-защита</li>
+                <li>Разные диоптрии</li>
             </ul>
         </div>
     </section>
@@ -286,17 +379,6 @@
                     <p>Заказывать очки с диоптриями и тонировкой — дорого, а для вождения ночью они вообще не подходят. При активном отдыхе обычные очки слетают, а солнце слепит глаза.</p>
                     <p>Хочется просто видеть четко, не страдать от яркого света и бликов встречных фар, и при этом выглядеть стильно.</p>
                 </div>
-                <div class="reveal glass-card">
-                    <span class="toggle-label">Демо: Магнитная насадка</span>
-                    <div class="toggle-wrapper">
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="magnetToggle" checked>
-                            <span class="slider-toggle"></span>
-                        </label>
-                    </div>
-                    <div class="toggle-status" id="toggleStatus">Насадка активна</div>
-                    <p style="color: var(--text-muted); margin-top: 10px; font-size: 0.9rem;">Попробуйте включить и выключить насадку</p>
-                </div>
             </div>
         </div>
     </section>
@@ -307,7 +389,7 @@
             <h2 class="reveal">Решение: <br>Очки W OPTICS</h2>
             <div class="showcase-grid">
                 <div class="showcase-card reveal">
-                    <img src="assets/images/base-glasses.png" alt="Основа Очки с диоптриями" class="showcase-img">
+                    <img src="assets/images/base-glasses.webp" alt="Основа Очки с диоптриями" class="showcase-img">
                     <div class="showcase-text">
                         <h3>Основа: Очки с диоптриями</h3>
                         <p>Легкая и прочная оправа. Возможность заказать линзы с любыми диоптриями специально под ваше зрение.</p>
@@ -315,11 +397,11 @@
                     </div>
                 </div>
                 <div class="showcase-card reveal">
-                    <img src="assets/images/sun-antiglare.png" alt="Солнцезащитная магнитная насадка" class="showcase-img">
+                    <img src="assets/images/sun-antiglare.webp" alt="Солнцезащитная магнитная насадка" class="showcase-img">
                     <div class="showcase-text">
-                        <h3>Насадка: Антиблик + UV400</h3>
+                        <h3>Насадка: антиблик + UV-защита</h3>
                         <p>Линзы с покрытием от бликов — настоящее спасение для водителей с плохим зрением. Встречные фары больше не ослепляют.</p>
-                        <p>Мощные неодимовые магниты надежно держат насадку при любых нагрузках: велосипед, горные лыжи, бег и активный спорт.</p>
+                        <p>Мощные неодимовые магниты надёжно держат насадку при любых нагрузках: велосипед, горные лыжи, бег и активный спорт.</p>
                     </div>
                 </div>
             </div>
@@ -350,23 +432,114 @@
         </div>
     </section>
 
+    <!-- LIFESTYLE / USAGE -->
+    <section id="lifestyle" class="steps">
+        <div class="container">
+            <h2 class="reveal">Одна пара — на все случаи</h2>
+            <p class="reveal" style="max-width: 760px; margin: 0 auto 60px; text-align: center; color: var(--text-muted); font-size: 1.2rem;">Очки с нужными вам диоптриями работают в любую погоду и в любое время суток. На солнце — насадка, вечером и в помещении — без неё. Вы всегда видите мир чётко.</p>
+            <div class="showcase-grid">
+                <div class="showcase-card reveal">
+                    <img src="assets/images/life-man-day.webp" alt="Велосипед днём, с солнцезащитной насадкой" class="showcase-img">
+                    <div class="showcase-text">
+                        <span class="life-tag">С насадкой · солнце</span>
+                        <h3>День на велосипеде</h3>
+                        <p>Яркое солнце и блики — насадка защищает глаза, зрение остаётся чётким на скорости.</p>
+                    </div>
+                </div>
+                <div class="showcase-card reveal">
+                    <img src="assets/images/life-man-evening.webp" alt="Велосипед вечером, без насадки" class="showcase-img">
+                    <div class="showcase-text">
+                        <span class="life-tag">Без насадки · вечер</span>
+                        <h3>Вечер в городе</h3>
+                        <p>Солнце село — насадку сняли за секунду. В сумерках и от фар помогают диоптрии и антиблик.</p>
+                    </div>
+                </div>
+                <div class="showcase-card reveal">
+                    <img src="assets/images/life-girl-sun.webp" alt="Пробежка в солнечный день, с насадкой" class="showcase-img">
+                    <div class="showcase-text">
+                        <span class="life-tag">С насадкой · солнце</span>
+                        <h3>Пробежка в солнечный день</h3>
+                        <p>Солнце слепит? Насадка держится на магнитах и не слетает даже на бегу.</p>
+                    </div>
+                </div>
+                <div class="showcase-card reveal">
+                    <img src="assets/images/life-girl-cloudy.webp" alt="Пробежка в пасмурный день, без насадки" class="showcase-img">
+                    <div class="showcase-text">
+                        <span class="life-tag">Без насадки · пасмурно</span>
+                        <h3>Пробежка в пасмурный день</h3>
+                        <p>Нет солнца — насадка не нужна. Очки с диоптриями работают в любую погоду.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REAL PHOTOS -->
+    <section id="real" class="steps">
+        <div class="container">
+            <h2 class="reveal">Настоящий комплект — живые фото</h2>
+            <p class="reveal" style="max-width: 760px; margin: 0 auto 60px; text-align: center; color: var(--text-muted); font-size: 1.2rem;">Не рендеры: реальный комплект — оправа для зрения и магнитная солнцезащитная насадка.</p>
+            <div class="showcase-grid">
+                <div class="showcase-card reveal">
+                    <img src="assets/images/real-003.jpg" alt="Оправа для зрения и снятая магнитная насадка рядом" class="showcase-img" loading="lazy" decoding="async">
+                    <div class="showcase-text">
+                        <span class="life-tag">Два режима · насадка рядом</span>
+                        <h3>Один комплект — два режима</h3>
+                        <p>Оправа для зрения и насадка лежат рядом: крепится и снимается за секунду.</p>
+                    </div>
+                </div>
+                <div class="showcase-card reveal">
+                    <img src="assets/images/real-002.jpg" alt="Очки с установленной солнцезащитной насадкой" class="showcase-img" loading="lazy" decoding="async">
+                    <div class="showcase-text">
+                        <span class="life-tag">С насадкой</span>
+                        <h3>Комплект в сборе</h3>
+                        <p>Очки с установленной насадкой — режим для улицы и вождения.</p>
+                    </div>
+                </div>
+                <div class="showcase-card reveal">
+                    <img src="assets/images/real-001.jpg" alt="Очки с насадкой, вид сбоку" class="showcase-img" loading="lazy" decoding="async">
+                    <div class="showcase-text">
+                        <span class="life-tag">С насадкой · профиль</span>
+                        <h3>Насадка сидит вплотную</h3>
+                        <p>Магниты держат насадку вплотную к оправе при любых нагрузках.</p>
+                    </div>
+                </div>
+                <div class="showcase-card reveal">
+                    <img src="assets/images/real-004.jpg" alt="Очки с насадкой, вид спереди" class="showcase-img" loading="lazy" decoding="async">
+                    <div class="showcase-text">
+                        <span class="life-tag">С насадкой · фас</span>
+                        <h3>Вид спереди</h3>
+                        <p>Затемнённые линзы с антибликовым покрытием и UV-защитой.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="reveal" style="max-width: 760px; margin: 60px auto 30px; text-align: center; color: var(--text-muted); font-size: 1.2rem;">Мы в Санкт-Петербурге: доставим по городу и области, посмотреть и примерить можно при встрече.</p>
+            <div class="reveal" style="text-align: center;">
+                <a class="btn" href="https://t.me/+79990668884" target="_blank" rel="noopener">Написать в Telegram</a>
+            </div>
+        </div>
+    </section>
+
     <!-- REVIEWS -->
     <section>
         <div class="container">
-            <h2 class="reveal">Почему нам доверяют</h2>
-            <div class="stats reveal">
-                <div class="stat-item"><h3>1500+</h3><p>Довольных клиентов</p></div>
-                <div class="stat-item"><h3>4.9★</h3><p>Средняя оценка</p></div>
-                <div class="stat-item"><h3>15k ₽</h3><p>Средняя экономия</p></div>
-            </div>
+            <h2 class="reveal">Кому подойдут очки W OPTICS</h2>
             <div class="reviews">
                 <div class="review-card reveal">
-                    <p>"Работаю таксистом, за рулем с утра до ночи. Раньше мучился: надо и дорогу хорошо видеть, и от солнца прятаться, а оно еще и бликами на лобовом стекле отсвечивало так, что глаза уставали. С этими очками проблема решена! Диоптрии дают четкое зрение, а магнитная насадка спасает от солнца и убирает блики. Стал видеть дорогу идеально в любую погоду. Рекомендую всем водителям!"</p>
-                    <div class="review-author">Сергей, 45 лет</div>
+                    <p>Водителям — чёткое зрение за рулём и защита от солнца и бликов встречных фар.</p>
+                    <div class="review-author">За рулём</div>
                 </div>
                 <div class="review-card reveal">
-                    <p>"Солнце вышло — насадка на месте за секунду. Темно в помещении — снял одним движением. Вожу машину, гоняю на велике, хожу пешком. Держатся намертво, зрение в них теперь идеальное в любой ситуации."</p>
-                    <div class="review-author">Алексей, 34 года</div>
+                    <p>Тем, кто работает за компьютером — комфортная оправа и антибликовое покрытие на весь день.</p>
+                    <div class="review-author">За компьютером</div>
+                </div>
+                <div class="review-card reveal">
+                    <p>Активным людям — на солнце крепите насадку, в помещении снимаете. Одна пара вместо двух.</p>
+                    <div class="review-author">Спорт и отдых</div>
+                </div>
+                <div class="review-card reveal">
+                    <p>Всем, кто носит очки каждый день — практичное решение на каждый день, для мужчин и женщин.</p>
+                    <div class="review-author">Каждый день</div>
                 </div>
             </div>
         </div>
@@ -397,9 +570,8 @@
     <section id="order" class="offer">
         <div class="container">
             <h2 class="reveal">Оформите предзаказ</h2>
-            <p class="delivery-info reveal">Бесплатная доставка по СПб при заказе от 2-х пар</p>
-            <div class="price-tag reveal"><span class="old-price">4 990 ₽</span>2 990 ₽</div>
-            <p class="countdown reveal">Осталось мест по акции: 12</p>
+            <p class="delivery-info reveal">Бесплатная доставка по Санкт-Петербургу и Ленинградской области при заказе от 2 пар</p>
+            <div class="price-tag reveal">2 990 ₽</div>
             <button class="btn reveal" onclick="openPopup()">Открыть форму заказа</button>
         </div>
     </section>
@@ -409,7 +581,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="assets/images/logo.png" alt="Logo" class="footer-logo">
+                    <img src="assets/images/logo.webp" alt="Logo" class="footer-logo">
                     <p class="footer-desc">Солнцезащитные очки для зрения с магнитной насадкой. 2 в 1 для водителей и спорта.</p>
                 </div>
                 <div class="footer-col">
@@ -424,17 +596,16 @@
                 <div class="footer-col">
                     <h4>КОНТАКТЫ</h4>
                     <ul>
-                        <li><a href="tel:+79991234567">+7 (999) 123-45-67</a></li>
-                        <li><a href="mailto:info@woptics.ru">info@woptics.ru</a></li>
+                        <li><a href="tel:+79990668884">+7 (999) 066-88-84</a></li>
+                        <li><a href="mailto:sewercom@yandex.ru">sewercom@yandex.ru</a></li>
                         <li><a href="#">Санкт-Петербург</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>СОЦСЕТИ</h4>
                     <ul>
-                        <li><a href="#">Telegram</a></li>
-                        <li><a href="#">ВКонтакте</a></li>
-                        <li><a href="#">Instagram</a></li>
+                        <li><a href="https://t.me/+79990668884" target="_blank" rel="noopener">Telegram</a></li>
+                        <li><a href="https://vk.ru/anna_kamchatka" target="_blank" rel="noopener">ВКонтакте</a></li>
                     </ul>
                 </div>
             </div>
@@ -442,6 +613,15 @@
             <div class="footer-bottom">
                 <span>© 2026 W OPTICS. ALL RIGHTS RESERVED.</span>
                 <span><a href="#" style="color: var(--text-muted); text-decoration: none;">PRIVACY POLICY</a> | <a href="#" style="color: var(--text-muted); text-decoration: none;">TERMS</a></span>
+            </div>
+            <div class="footer-credit">
+                <a class="ak-badge" href="https://annakam.ru" target="_blank" rel="noopener" aria-label="Сайт разработан Анна Камчатка — annakam.ru" title="Сайт разработан Анна Камчатка — annakam.ru">
+                    <span class="ak-badge__mark" aria-hidden="true"><span class="ak-badge__mark-txt">AK</span></span>
+                    <span class="ak-badge__text">
+                        <small>Сайт разработан</small>
+                        <b>Анна Камчатка · annakam.ru</b>
+                    </span>
+                </a>
             </div>
         </div>
     </footer>
@@ -455,27 +635,118 @@
         <a href="#order" class="nav-item" onclick="openPopup()">Заказ</a>
     </nav>
 
-    <!-- POPUP FORM -->
+    <!-- TOP BUTTON -->
+    <button class="to-top" id="toTop" type="button" aria-label="Наверх">TOP</button>
+
+    <!-- POPUP: ORDER WIZARD (диоптрии → данные → оплата) -->
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup-content">
-            <button class="close-popup" onclick="closePopup()">×</button>
-            <h3 style="font-family: 'Unbounded', sans-serif; margin-bottom: 20px; font-size: 1.8rem;">Оформление предзаказа</h3>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">Оставьте заявку и мы свяжемся с вами для уточнения диоптрий и доставки.</p>
-            <form id="orderForm">
-                <div class="form-group">
-                    <label for="name">Ваше имя</label>
-                    <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+            <button class="close-popup" onclick="closePopup()" aria-label="Закрыть">×</button>
+            <div class="osteps" id="osteps">
+                <span class="on">1 · Диоптрии</span>
+                <span>2 · Данные</span>
+                <span>3 · Оплата</span>
+            </div>
+            <form id="orderForm" novalidate>
+                <!-- ШАГ 1: ДИОПТРИИ -->
+                <div class="ostep on" data-step="1">
+                    <h3 style="font-family: 'Unbounded', sans-serif; font-size: 1.45rem; margin-bottom: 10px;">Ваши диоптрии</h3>
+                    <p class="dio-hint">Шаг 0.25, от −12.00 до +6.00. Возьмите значения из рецепта либо оставьте 0.00, если очки без диоптрий.</p>
+                    <div class="dio-grid">
+                        <div class="dio-card">
+                            <small>Правый глаз</small>
+                            <div class="dio-row">
+                                <button type="button" class="dio-btn" data-eye="r" data-step="-1" aria-label="Уменьшить диоптрию правого глаза">−</button>
+                                <span class="dio-val" id="dioR">0.00</span>
+                                <button type="button" class="dio-btn" data-eye="r" data-step="1" aria-label="Увеличить диоптрию правого глаза">+</button>
+                            </div>
+                            <span class="dio-unit">диоптрии (D)</span>
+                        </div>
+                        <div class="dio-card">
+                            <small>Левый глаз</small>
+                            <div class="dio-row">
+                                <button type="button" class="dio-btn" data-eye="l" data-step="-1" aria-label="Уменьшить диоптрию левого глаза">−</button>
+                                <span class="dio-val" id="dioL">0.00</span>
+                                <button type="button" class="dio-btn" data-eye="l" data-step="1" aria-label="Увеличить диоптрию левого глаза">+</button>
+                            </div>
+                            <span class="dio-unit">диоптрии (D)</span>
+                        </div>
+                    </div>
+                    <label class="dio-same"><input type="checkbox" id="dioSame" checked> Диоптрии одинаковые на оба глаза</label>
+                    <div class="o-nav">
+                        <button type="button" class="btn-submit" data-next="2">Далее →</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Телефон</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+
+                <!-- ШАГ 2: ДАННЫЕ -->
+                <div class="ostep" data-step="2">
+                    <h3 style="font-family: 'Unbounded', sans-serif; font-size: 1.45rem; margin-bottom: 16px;">Данные для связи</h3>
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" placeholder="Иван Иванов" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" autocomplete="tel" inputmode="tel">
+                    </div>
+                    <div class="form-group qty-line">
+                        <label for="qtyVal">Количество комплектов</label>
+                        <div class="dio-row">
+                            <button type="button" class="dio-btn" id="qtyMinus" aria-label="Меньше комплектов">−</button>
+                            <span class="dio-val" id="qtyVal">1</span>
+                            <button type="button" class="dio-btn" id="qtyPlus" aria-label="Больше комплектов">+</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Доставка</label>
+                        <div class="opt-list">
+                            <label><input type="radio" name="delivery" value="Курьер по СПб и ЛО" checked> Курьер по Санкт-Петербургу и Ленинградской области (от 2 пар — бесплатно)</label>
+                            <label><input type="radio" name="delivery" value="Самовывоз в СПб"> Самовывоз в Санкт-Петербурге</label>
+                            <label><input type="radio" name="delivery" value="СДЭК / Почта"> СДЭК или Почта по России</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Комментарий (необязательно)</label>
+                        <textarea id="comment" class="o-field" rows="2" placeholder="Например: есть астигматизм — перезвоните"></textarea>
+                    </div>
+                    <div class="o-nav">
+                        <button type="button" class="o-back" data-back="1">← Назад</button>
+                        <button type="button" class="btn-submit" data-next="3">Далее →</button>
+                    </div>
+                    <div class="o-err" id="oErr2" role="alert"></div>
                 </div>
-                <div class="form-group">
-                    <label for="diopter">Ваши диоптрии (необязательно)</label>
-                    <input type="text" id="diopter" name="diopter" placeholder="Например: -2.5 на оба глаза">
+
+                <!-- ШАГ 3: ПРОВЕРКА И ОПЛАТА -->
+                <div class="ostep" data-step="3">
+                    <div id="oCheckWrap">
+                        <h3 style="font-family: 'Unbounded', sans-serif; font-size: 1.45rem; margin-bottom: 16px;">Проверьте заказ</h3>
+                        <div class="o-summary" id="oSummary"></div>
+                        <div class="o-nav">
+                            <button type="button" class="o-back" data-back="2">← Назад</button>
+                            <button type="submit" class="btn-submit" id="oSubmit">Оформить заказ</button>
+                        </div>
+                        <div class="o-err" id="oErr3" role="alert"></div>
+                    </div>
+
+                    <div class="pay-box" id="payBox" hidden>
+                        <div class="o-ok" id="sentBox" hidden>Заказ отправлен — мы уже видим его в Telegram</div>
+                        <div class="o-fallback" id="fallbackBox" hidden>
+                            <p class="pay-note">Соединение с ботом ещё не настроено — скопируйте текст заказа и отправьте нам в Telegram:</p>
+                            <textarea id="fbText" readonly aria-label="Текст заказа"></textarea>
+                            <button type="button" class="o-copy" id="fbCopy">Скопировать текст заказа</button>
+                        </div>
+                        <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.15rem; margin: 4px 0 10px;">Оплата по QR (СБП)</h4>
+                        <div class="qr-wrap" id="qrWrap"><img id="qrImg" src="assets/images/qr-sbp.png" alt="QR-код для оплаты по СБП"></div>
+                        <div class="pay-oid">ЗАКАЗ <span id="payOid"></span></div>
+                        <div class="pay-sum" id="paySum"></div>
+                        <p class="pay-note">Оплатите по QR с телефона через СБП. <b>В комментарии к платежу укажите номер заказа</b> — тогда мы сразу свяжем оплату и заказ.</p>
+                        <p class="pay-note">После оплаты пришлите скриншот в Telegram — подтвердим и начнём сборку.</p>
+                        <a class="tg-pay" href="https://t.me/+79990668884" target="_blank" rel="noopener">Открыть Telegram</a>
+                        <div class="o-nav" style="margin-top: 16px;">
+                            <button type="button" class="o-back" style="flex: 1;" onclick="closePopup()">Готово</button>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn-submit">Отправить заявку</button>
-                <div class="success-msg" id="successMsg" role="status" aria-live="polite">Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.</div>
             </form>
         </div>
     </div>
@@ -653,41 +924,202 @@
             if (e.key === 'Escape') closePopup();
         });
 
-        // --- TOGGLE LOGIC ---
-        const magnetToggle = document.getElementById('magnetToggle');
-        const toggleStatus = document.getElementById('toggleStatus');
-        if (magnetToggle && toggleStatus) {
-            magnetToggle.addEventListener('change', function() {
-                if (this.checked) {
-                    toggleStatus.innerText = 'Насадка активна';
-                    toggleStatus.style.color = '#00f2ff';
-                } else {
-                    toggleStatus.innerText = 'Насадка снята';
-                    toggleStatus.style.color = '#8892b0';
-                }
-            });
-        }
+        // === МАРШРУТ ОТПРАВКИ ЗАКАЗА В TELEGRAM ===
+        // URL Cloudflare Worker — инструкция в TELEGRAM-SETUP.md.
+        // Пустая строка: заказ показывается покупателю для ручной отправки в Telegram.
+        const TG_ENDPOINT = '';
 
-        // --- FORM SUBMIT ---
-        const orderForm = document.getElementById('orderForm');
-        if (orderForm) {
-            orderForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const phone = document.getElementById('phone').value.replace(/\D/g, '');
+        // --- ORDER WIZARD: диоптрии → данные → оплата ---
+        (function() {
+            const PRICE = 2990;
+            const form = document.getElementById('orderForm');
+            if (!form) return;
+
+            const stepPans = document.querySelectorAll('#osteps span');
+            const stepBlocks = form.querySelectorAll('.ostep');
+            const err2 = document.getElementById('oErr2');
+            const err3 = document.getElementById('oErr3');
+
+            // --- диоптрии: сотые доли, шаг 0.25, диапазон −12.00…+6.00 ---
+            const dio = { r: 0, l: 0 };
+            const fmtD = (v, ascii) => {
+                const sign = v < 0 ? (ascii ? '-' : '\u2212') : v > 0 ? '+' : '';
+                return sign + (Math.abs(v) / 100).toFixed(2);
+            };
+            const elR = document.getElementById('dioR');
+            const elL = document.getElementById('dioL');
+            const same = document.getElementById('dioSame');
+            function renderDio() {
+                elR.textContent = fmtD(dio.r, false);
+                elL.textContent = fmtD(dio.l, false);
+            }
+            form.querySelectorAll('.dio-btn[data-eye]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const eye = btn.dataset.eye;
+                    dio[eye] = Math.max(-1200, Math.min(600, dio[eye] + parseInt(btn.dataset.step, 10) * 25));
+                    if (same.checked) dio[eye === 'r' ? 'l' : 'r'] = dio[eye];
+                    renderDio();
+                });
+            });
+            same.addEventListener('change', () => {
+                if (same.checked) { dio.l = dio.r; renderDio(); }
+            });
+
+            // --- количество комплектов ---
+            let qty = 1;
+            const qtyVal = document.getElementById('qtyVal');
+            document.getElementById('qtyMinus').addEventListener('click', () => { qty = Math.max(1, qty - 1); qtyVal.textContent = qty; });
+            document.getElementById('qtyPlus').addEventListener('click', () => { qty = Math.min(9, qty + 1); qtyVal.textContent = qty; });
+
+            // --- шаги мастера ---
+            let curStep = 1;
+            function goStep(n) {
+                curStep = n;
+                stepBlocks.forEach(b => b.classList.toggle('on', Number(b.dataset.step) === n));
+                stepPans.forEach((s, i) => s.classList.toggle('on', i === n - 1));
+                const box = document.querySelector('.popup-content');
+                if (box) box.scrollTop = 0;
+                if (n === 3) fillSummary();
+            }
+            function validContacts() {
                 const name = document.getElementById('name').value.trim();
-                if (name.length < 2 || phone.length < 10) {
-                    alert('Пожалуйста, заполните имя и корректный номер телефона.');
+                const phone = document.getElementById('phone').value.replace(/\D/g, '');
+                if (name.length < 2) { err2.textContent = 'Укажите имя (минимум 2 символа).'; return false; }
+                if (phone.length < 10) { err2.textContent = 'Проверьте номер телефона.'; return false; }
+                err2.textContent = '';
+                return true;
+            }
+            form.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => {
+                const n = Number(b.dataset.next);
+                if (n === 3 && !validContacts()) return;
+                goStep(n);
+            }));
+            form.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => {
+                err2.textContent = '';
+                err3.textContent = '';
+                goStep(Number(b.dataset.back));
+            }));
+
+            // --- сбор и оформление заказа ---
+            const money = v => v.toLocaleString('ru-RU') + ' \u20BD';
+            function collectOrder() {
+                const del = form.querySelector('input[name="delivery"]:checked');
+                return {
+                    oid: 'W-' + Math.floor(1000 + Math.random() * 9000),
+                    name: document.getElementById('name').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    dioR: fmtD(dio.r, true),
+                    dioL: fmtD(dio.l, true),
+                    qty: qty,
+                    delivery: del ? del.value : '',
+                    comment: document.getElementById('comment').value.trim(),
+                    total: PRICE * qty,
+                    page: location.href,
+                    ts: new Date().toLocaleString('ru-RU')
+                };
+            }
+            function escapeHtml(s) {
+                return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+            }
+            function fillSummary() {
+                const o = collectOrder();
+                const rows = [
+                    ['Имя', o.name],
+                    ['Телефон', o.phone],
+                    ['Диоптрии', 'правый ' + o.dioR + ' D'],
+                    ['', 'левый ' + o.dioL + ' D'],
+                    ['Комплектов', String(o.qty)],
+                    ['Доставка', o.delivery]
+                ];
+                if (o.comment) rows.push(['Комментарий', o.comment]);
+                let html = rows.map(r => '<div><span>' + escapeHtml(r[0]) + '</span><b>' + escapeHtml(r[1]) + '</b></div>').join('');
+                html += '<div class="o-total"><span>Итого (товары)</span><b>' + money(o.total) + '</b></div>';
+                document.getElementById('oSummary').innerHTML = html;
+            }
+            function orderText(o) {
+                return [
+                    '\uD83D\uDED2 ЗАКАЗ ' + o.oid + ' (W OPTICS)',
+                    'Имя: ' + o.name,
+                    'Телефон: ' + o.phone,
+                    'Диоптрии: правый ' + o.dioR + ' D, левый ' + o.dioL + ' D',
+                    'Комплектов: ' + o.qty,
+                    'Доставка: ' + o.delivery,
+                    o.comment ? 'Комментарий: ' + o.comment : null,
+                    'Сумма (товары): ' + money(o.total)
+                ].filter(Boolean).join('\n');
+            }
+
+            // --- отправка + экран оплаты ---
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                // Enter на шаге 2 не должен отправлять заказ мимо проверки
+                if (curStep !== 3) {
+                    if (validContacts()) goStep(3);
                     return;
                 }
-                const successMsg = document.getElementById('successMsg');
-                if (successMsg) successMsg.style.display = 'block';
-                this.reset();
-                setTimeout(() => {
-                    if (successMsg) successMsg.style.display = 'none';
-                    closePopup();
-                }, 3000);
+                if (!validContacts()) { goStep(2); return; }
+                const btn = document.getElementById('oSubmit');
+                btn.disabled = true;
+                btn.textContent = 'Отправляем\u2026';
+                const o = collectOrder();
+                let sent = false;
+                if (TG_ENDPOINT) {
+                    try {
+                        const r = await fetch(TG_ENDPOINT, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(o)
+                        });
+                        sent = r.ok;
+                    } catch (e2) { sent = false; }
+                }
+                btn.disabled = false;
+                btn.textContent = 'Оформить заказ';
+                document.getElementById('oCheckWrap').hidden = true;
+                document.getElementById('payBox').hidden = false;
+                document.getElementById('sentBox').hidden = !sent;
+                document.getElementById('fallbackBox').hidden = sent;
+                if (!sent) document.getElementById('fbText').value = orderText(o);
+                document.getElementById('payOid').textContent = o.oid;
+                document.getElementById('paySum').textContent = money(o.total);
             });
-        }
+
+            // --- копирование текста заказа (ручной режим) ---
+            document.getElementById('fbCopy').addEventListener('click', function() {
+                const ta = document.getElementById('fbText');
+                const done = () => {
+                    this.textContent = 'Скопировано ✓';
+                    setTimeout(() => { this.textContent = 'Скопировать текст заказа'; }, 2000);
+                };
+                ta.select();
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(ta.value).then(done, () => { document.execCommand('copy'); done(); });
+                } else { document.execCommand('copy'); done(); }
+            });
+
+            // --- QR: пока картинки нет — заглушка ---
+            const qrImg = document.getElementById('qrImg');
+            const qrFallback = function() {
+                const wrap = document.getElementById('qrWrap');
+                if (wrap && !wrap.dataset.fallback) {
+                    wrap.dataset.fallback = '1';
+                    wrap.innerHTML = '<div class="qr-miss">QR-код (СБП)<br>будет добавлен</div>';
+                }
+            };
+            qrImg.addEventListener('error', qrFallback);
+            if (qrImg.complete && qrImg.naturalWidth === 0) qrFallback();
+
+            // --- при каждом открытии попапа — шаг 1 ---
+            const origOpen = window.openPopup;
+            window.openPopup = function() {
+                err2.textContent = '';
+                err3.textContent = '';
+                document.getElementById('oCheckWrap').hidden = false;
+                document.getElementById('payBox').hidden = true;
+                goStep(1);
+                if (origOpen) origOpen();
+            };
+        })();
 
         // --- BOTTOM NAV ACTIVE STATE ---
         const navItems = document.querySelectorAll('.nav-item');
@@ -720,6 +1152,18 @@
                 ticking = true;
             }
         });
+
+        // --- КНОПКА TOP (наверх) ---
+        (function() {
+            const toTop = document.getElementById('toTop');
+            if (!toTop) return;
+            const toggleTop = () => toTop.classList.toggle('visible', pageYOffset > 600);
+            window.addEventListener('scroll', toggleTop, { passive: true });
+            toggleTop();
+            toTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+            });
+        })();
     </script>
 </body>
 </html>

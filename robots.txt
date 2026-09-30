@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://woptic.annakam.ru/sitemap.xml
