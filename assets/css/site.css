@@ -221,9 +221,35 @@
         .showcase-card.tilt, .review-card.tilt { transition: transform 0.18s ease-out; transform: perspective(950px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); will-change: transform; }
         .showcase-card.tilt:hover, .review-card.tilt:hover { box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5), 0 0 34px rgba(0, 242, 255, 0.16); }
 
+        /* СТАТЬИ И SEO-БЛОКИ (этап 3) */
+        .article { max-width: 860px; margin: 0 auto; padding: 130px 24px 70px; }
+        .article h1 { font-size: clamp(1.7rem, 4.5vw, 3rem); color: #fff; line-height: 1.15; margin: 18px 0 22px; letter-spacing: -0.02em; }
+        .article h2 { font-size: clamp(1.3rem, 3vw, 1.9rem); margin: 44px 0 16px; }
+        .article p, .article li { color: var(--text); font-size: 1.06rem; margin-bottom: 14px; }
+        .article ul { padding-left: 24px; margin-bottom: 14px; }
+        .crumbs { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; }
+        .crumbs a { color: var(--primary); text-decoration: none; }
+        .lead { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px; }
+        .article-img { width: 100%; height: auto; max-height: 520px; object-fit: cover; border-radius: 20px; margin: 26px 0; border: 1px solid rgba(255,255,255,0.07); }
+        .price-cta { text-align: center; background: var(--card-bg); border: 1px solid rgba(0,242,255,0.35); border-radius: 24px; padding: 44px 30px; margin: 44px 0; }
+        .price-cta .price-tag { margin: 0 0 12px; }
+        .price-cta .muted { color: var(--text-muted); font-size: 0.9rem; margin: 14px 0 0; }
+        .more, .contacts { font-size: 0.98rem; }
+        .more a, .contacts a { color: var(--primary); }
+        .seo-text { max-width: 960px; margin: 0 auto; padding: 0 24px 90px; color: var(--text-muted); }
+        .seo-text h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin: 0 0 16px; }
+        .seo-text p { margin-bottom: 14px; font-size: 1.02rem; }
+        .seo-text section { padding: 0; margin-bottom: 50px; }
+        .poleznoe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+        .poleznoe-card { display: block; background: var(--card-bg); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 30px; text-decoration: none; transition: transform 0.4s, border-color 0.4s; }
+        .poleznoe-card:hover { transform: translateY(-8px); border-color: var(--primary); }
+        .poleznoe-card h3 { color: #fff; font-size: 1.15rem; margin-bottom: 10px; }
+        .poleznoe-card p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+        @media (max-width: 768px) { .poleznoe-grid { grid-template-columns: 1fr; } .article { padding-top: 100px; } }
+
         /* FOOTER (FOOTER.DESIGN REF) */
         footer { background: #000; padding: 80px 0 150px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 3; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 80px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; }
+        .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 36px; margin-bottom: 80px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; }
         .footer-col h4 { font-family: var(--mono); color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 15px; }

@@ -4,47 +4,335 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гарантия, возврат и обмен — W OPTICS</title>
-    <meta name="description" content="Условия гарантии, возврата и обмена очков W OPTICS.">
-    <meta name="robots" content="noindex, follow">
-    <link rel="icon" type="image/webp" href="assets/images/logo.webp">
+    <meta name="description" content="Гарантия на оправу и магнитную насадку W OPTICS, проверка при получении, обмен по диоптриям и условия возврата.">
+    <meta name="theme-color" content="#050510">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/logo.webp">
     <link rel="canonical" href="https://woptic.annakam.ru/garantia-i-vozvrat.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="W OPTICS">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="Гарантия, возврат и обмен">
+    <meta property="og:description" content="Гарантия на оправу и магнитную насадку W OPTICS, проверка при получении, обмен по диоптриям и условия возврата.">
+    <meta property="og:url" content="https://woptic.annakam.ru/garantia-i-vozvrat.html">
+    <meta property="og:image" content="https://woptic.annakam.ru/assets/images/og-cover.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary:#00f2ff; --accent:#7000ff; --dark:#050510; --text:#e0e6ed; --muted:#8892b0; }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior:smooth; }
-        body { font-family:'Inter',sans-serif; color:var(--text); line-height:1.7; background:var(--dark); padding:40px 20px 80px; }
-        .wrap { max-width:860px; margin:0 auto; }
-        h1 { font-family:'Unbounded',sans-serif; font-size:clamp(1.6rem,4vw,2.6rem); color:#fff; margin-bottom:24px; }
-        h2 { font-family:'Unbounded',sans-serif; font-size:1.25rem; color:var(--primary); margin:36px 0 14px; }
-        p, li { color:var(--text); font-size:1rem; margin-bottom:12px; }
-        ul { padding-left:24px; }
-        a { color:var(--primary); }
-        .back { display:inline-block; margin-bottom:30px; color:var(--muted); text-decoration:none; font-size:.9rem; border:1px solid rgba(255,255,255,.2); border-radius:50px; padding:8px 18px; transition:.25s; }
-        .back:hover { color:var(--primary); border-color:var(--primary); }
-        .upd { color:var(--muted); font-size:.85rem; margin-bottom:30px; }
-        .todo { color:#ff6b6b; font-size:.85rem; border-left:3px solid #ff6b6b; padding-left:12px; margin:20px 0; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Гарантия, возврат и обмен",
+      "description": "Гарантия на оправу и магнитную насадку W OPTICS, проверка при получении, обмен по диоптриям и условия возврата.",
+      "url": "https://woptic.annakam.ru/garantia-i-vozvrat.html",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://woptic.annakam.ru/"}, {"@type": "ListItem", "position": 2, "name": "Гарантия и возврат", "item": "https://woptic.annakam.ru/garantia-i-vozvrat.html"}]
+      }
+    }
+    </script>
 </head>
 <body>
-<div class="wrap">
-    <a class="back" href="/">← На главную</a>
-    <h1>Гарантия, возврат и обмен</h1>
-    <p class="upd">Редакция от 01.10.2026</p>
-    <!-- TODO: юридический текст политики подставляет владелец; ниже — структура -->
-    <div class="todo">TODO (владелец): заполнить реквизиты оператора ({{РЕКВИЗИТЫ}}) и финализировать текст с юристом.</div>
+    <canvas id="bg-canvas"></canvas>
+    <header>
+        <div class="container nav">
+            <div class="logo-container">
+                <img src="assets/images/logo.webp" width="644" height="472" alt="W OPTICS — логотип" class="logo">
+            </div>
+            <div class="nav-links">
+                <a href="tel:+79990668884">Позвонить</a>
+                <a href="/#problem">Зачем нужны 2 в 1</a>
+                <a href="/#solution">Комплект</a>
+                <a href="/#faq">Вопросы и ответы</a>
+                <a href="/#order" onclick="openPopup()">Заказать</a>
+            </div>
+        </div>
+    </header>
+    <main>
+    <article class="article">
+<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a> · <span>Гарантия и возврат</span></nav>
+<h1>Гарантия, возврат и обмен</h1>
+<p class="lead">Если с оправой или магнитной насадкой что-то не так — заменим. Правила ниже честные и простые: что покрывает гарантия, как проверяем заказ при получении и что делать, если очки не подошли.</p>
+<img src="assets/images/real-001.webp" width="1200" height="708" alt="Комплект крупным планом: проверка качества перед отправкой" loading="lazy" decoding="async" class="article-img">
 
-    <div class="todo">TODO (владелец): уточнить гарантийный срок; ниже — каркас.</div>
-<h2>1. Гарантия</h2>
-<p>На оправу и магнитную насадку предоставляется гарантия {{СРОК_ГАРАНТИИ}} с момента получения. Гарантия не покрывает механические повреждения и естественный износ.</p>
-<h2>2. Проверка при получении</h2>
-<p>При получении заказа проверьте комплектацию и состояние изделия. Претензии по явным дефектам принимаются сразу при встрече с курьером или в момент получения.</p>
-<h2>3. Обмен по диоптриям</h2>
-<p>Если при подборе диоптрий возникла ошибка по нашей вине — заменим линзы бесплатно.</p>
-<h2>4. Возврат</h2>
-<p>Изделия, изготовленные индивидуально по диоптриям покупателя, обмену и возврату по причине «не подошли» не подлежат, кроме случаев брака. Спорные ситуации решаем по договорённости: <a href="tel:+79990668884">+7 (999) 066-88-84</a>, Telegram.</p>
+<h2>Гарантия на оправу и насадку</h2>
+<p>На оправу и магнитную насадку действует гарантия замены: заводской дефект, лопнувшая дужка без ударов, магнит, который не держит из коробки, — всё это повод для бесплатной замены. Гарантия не покрывает механические повреждения (сели, уронили на асфальт), царапины от носки без футляра и естественный износ.</p>
+<p>Чтобы воспользоваться гарантией, напишите нам в Telegram с фото проблемы и номером заказа. Разберёмся и предложим решение: замена детали или всего комплекта — по ситуации.</p>
+
+<h2>Проверка при получении</h2>
+<p>Получая заказ — у курьера, на встрече или в пункте выдачи, — проверьте три вещи. Первое: комплектация — оправа с линзами, насадка, футляр. Второе: посадка — оправа сидит ровно, дужки не давят. Третье: магниты — насадка притягивается сама и снимается без усилий, сидит вплотную, не болтается.</p>
+<p>О претензиях по явным дефектам сообщайте сразу: при курьере — на месте, при получении посылки — в тот же день с фото. Так мы быстрее всё исправим.</p>
+<img src="assets/images/pair-woman-in.webp" srcset="assets/images/pair-woman-in-600.webp 600w, assets/images/pair-woman-in-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 800px" width="1728" height="2304" alt="Проверка посадки оправы при получении" loading="lazy" decoding="async" class="article-img">
+
+<h2>Если не подошли диоптрии</h2>
+<p>Ошибка в диоптриях — самая чувствительная тема, поэтому разбираем её отдельно. Если ошибся рецепт, который вы прислали, — пересчитаем стоимость новых линз и предложим варианты. Если ошибка произошла при изготовлении по корректному рецепту (перепутаны значения, не тот цилиндр) — заменяем линзы бесплатно.</p>
+<p>Поэтому мы так настойчиво просим проверять рецепт до изготовления: фото рецепта в Telegram, подтверждение параметров, и только потом — производство и оплата. Потраченные пять минут на проверку экономят недели переделок.</p>
+
+<h2>Возврат: честно о линзах по рецепту</h2>
+<p>Линзы изготавливаются индивидуально под ваши глаза — такой товар, как и везде, не подлежит возврату «просто потому что передумал», кроме случаев брака. Но спорные ситуации мы решаем по-человечески: написали — разобрались — договорились. Контакты для обращений: телефон <a href="tel:+79990668884">+7 (999) 066-88-84</a> и Telegram.</p>
+<p>Полные юридические условия — в <a href="publichnaya-oferta.html">публичной оферте</a>, порядок обработки данных — в <a href="politika-konfidencialnosti.html">политике конфиденциальности</a>.</p>
+
+<h2>Брак или износ: как отличить</h2>
+<p>Гарантия покрывает заводские дефекты: трещина оправы без ударов, дужка, лопнувшая в первые недели, магнит, не держащий из коробки, облезающее покрытие в первые месяцы. Не покрывает: следы падений и ударов, царапины от носки без футляра и протирки одеждой, растянутые дужки от снимания одной рукой годами, выцветание от постоянного солнца на торпеде. Если сомневаетесь, к какой категории относится ваш случай, — просто напишите с фото: разберём честно, а не по шаблону отказа.</p>
+
+<h2>Как оформить обращение</h2>
+<p>Напишите в Telegram или позвоните: номер заказа, фото проблемы крупно и общим планом, короткое описание — что случилось и когда заметили. Этого достаточно, чтобы принять решение в большинстве случаев. Если понадобится вернуть деталь для осмотра — скажем, куда и как отправить, пересылку брака компенсируем.</p>
+<p>Срок рассмотрения — несколько рабочих дней. На время разбирательства по гарантийному случаю подскажем временное решение, чтобы вы не остались без очков.</p>
+
+<h2>Посадка и комфорт: подгонка оправы</h2>
+<p>Очки должны сидеть, а не висеть: не сползать на кончик носа, не давить на виски и не оставлять глубоких следов на переносице. Новую оправу примеряйте минут десять-пятнадцать — дискомфорт проявляется не сразу. Если дужки давят или оправа кривит — это правится подгонкой, а не «привыканием»: напишите нам, подскажем, что можно подправить, или приезжайте на встречу в Петербурге. Терпеть давящую оправу не нужно — она будет лежать в ящике, а не носиться.</p>
+
+<h2>Что делать, если проблема появилась через месяцы</h2>
+<p>Гарантия не заканчивается в день получения: если через два-три месяца разболтался винт, треснула дужка без ударов или магнит стал держать слабее — это тоже к нам. Пришлите фото и номер заказа, опишите, когда заметили. Мелкий ремонт часто решается за один визит или одной посылкой. Даже если случай окажется негарантийным (уронили, сели, погрызла собака), — напишите всё равно: подскажем, где чинить и сколько это должно стоить, чтобы вас не обсчитали в первой попавшейся мастерской.</p>
+
+<div class="price-cta">
+  <div class="price-tag">2 990 ₽</div>
+  <p>Оправа с линзами по рецепту + магнитная насадка с гарантией замены.</p>
+  <button class="btn" onclick="openPopup()">Заказать комплект</button>
+  <p class="muted">Оплата — после подтверждения рецепта и срока.</p>
 </div>
+
+<p class="more">Читайте также: <a href="dostavka-i-oplata.html">доставка и оплата</a>, <a href="o-nas.html">о нас</a>, <a href="blog/kak-zakazat-ochki-online.html">как заказать очки онлайн без ошибок</a>.</p>
+<p class="contacts">Гарантийные вопросы: <a href="tel:+79990668884">+7 (999) 066-88-84</a>, <a href="https://t.me/+79990668884" target="_blank" rel="noopener">Telegram</a>.</p>
+
+    </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/images/logo.webp" width="644" height="472" alt="W OPTICS — логотип" class="footer-logo" loading="lazy" decoding="async">
+                    <p class="footer-desc">Солнцезащитные очки для зрения с магнитной насадкой. 2 в 1 для водителей и спорта.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>МЕНЮ</h4>
+                    <ul>
+                        <li><a href="/#hero">Главная</a></li>
+                        <li><a href="/#problem">Зачем нужны 2 в 1</a></li>
+                        <li><a href="/#solution">Комплект</a></li>
+                        <li><a href="/#faq">Вопросы и ответы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>СТРАНИЦЫ</h4>
+                    <ul>
+                        <li><a href="klipony.html">Клипоны</a></li>
+                        <li><a href="dlya-vozhdeniya.html">Для вождения</a></li>
+                        <li><a href="o-nas.html">О нас</a></li>
+                        <li><a href="/dostavka-i-oplata.html">Доставка и оплата</a></li>
+                        <li><a href="/garantia-i-vozvrat.html">Гарантия и возврат</a></li>
+                        <li><a href="blog/">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>КОНТАКТЫ</h4>
+                    <ul>
+                        <li><a href="tel:+79990668884">+7 (999) 066-88-84</a></li>
+                        <li><a href="mailto:sewercom@yandex.ru">sewercom@yandex.ru</a></li>
+                        <li><a href="/#">Санкт-Петербург</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>СОЦСЕТИ</h4>
+                    <ul>
+                        <li><a href="https://t.me/+79990668884" target="_blank" rel="noopener">Telegram</a></li>
+                        <li><a href="https://vk.ru/anna_kamchatka" target="_blank" rel="noopener">ВКонтакте</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-heading" data-px="-0.05">W OPTICS</div>
+            <div class="footer-bottom">
+                <span>© 2026 W OPTICS. Все права защищены.</span>
+                <span><a href="/politika-konfidencialnosti.html" style="color: var(--text-muted); text-decoration: none;">Политика конфиденциальности</a> · <a href="/soglasie-na-obrabotku.html" style="color: var(--text-muted); text-decoration: none;">Согласие на обработку данных</a> · <a href="/publichnaya-oferta.html" style="color: var(--text-muted); text-decoration: none;">Оферта</a> · <a href="/garantia-i-vozvrat.html" style="color: var(--text-muted); text-decoration: none;">Гарантия и возврат</a> · <a href="/dostavka-i-oplata.html" style="color: var(--text-muted); text-decoration: none;">Доставка и оплата</a></span>
+            </div>
+            <div class="footer-bottom" style="margin-top: 14px;">
+                <span>{{РЕКВИЗИТЫ}} — Санкт-Петербург</span>
+            </div>
+            <div class="footer-credit">
+                <a class="ak-badge" href="https://annakam.ru" target="_blank" rel="noopener" aria-label="Сайт разработан Анна Камчатка — annakam.ru" title="Сайт разработан Анна Камчатка — annakam.ru">
+                    <span class="ak-badge__mark" aria-hidden="true"><span class="ak-badge__mark-txt">AK</span></span>
+                    <span class="ak-badge__text">
+                        <small>Сайт разработан</small>
+                        <b>Анна Камчатка · annakam.ru</b>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+        <a href="/#hero" class="nav-item active">Главная</a>
+        <a href="/#problem" class="nav-item">Зачем 2 в 1</a>
+        <a href="/#solution" class="nav-item">Комплект</a>
+        <a href="/#faq" class="nav-item">Вопросы</a>
+        <a href="/#order" class="nav-item" onclick="openPopup()">Заказать</a>
+        <a href="https://t.me/+79990668884" class="nav-item" target="_blank" rel="noopener">Telegram</a>
+    </nav>
+
+    <!-- TOP BUTTON -->
+    <button class="to-top" id="toTop" type="button" aria-label="Наверх">TOP</button>
+
+
+
+    <button class="to-top" id="toTop" type="button" aria-label="Наверх">TOP</button>
+
+    <!-- POPUP: ORDER WIZARD (диоптрии → данные → оплата) -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <button class="close-popup" onclick="closePopup()" aria-label="Закрыть">×</button>
+            <div class="osteps" id="osteps">
+                <span class="on">1 · Диоптрии</span>
+                <span>2 · Данные</span>
+                <span>3 · Оплата</span>
+            </div>
+            <form id="orderForm" novalidate>
+                <!-- ШАГ 1: ДИОПТРИИ -->
+                <div class="ostep on" data-step="1">
+                    <h3 style="font-family: 'Unbounded', sans-serif; font-size: 1.45rem; margin-bottom: 10px;">Ваши диоптрии</h3>
+                    <p class="dio-hint">Шаг 0.25, от −12.00 до +6.00. Возьмите значения из рецепта либо оставьте 0.00, если очки без диоптрий.</p>
+                    <div class="dio-grid">
+                        <div class="dio-card">
+                            <small>Правый глаз</small>
+                            <div class="dio-row">
+                                <button type="button" class="dio-btn" data-eye="r" data-step="-1" aria-label="Уменьшить диоптрию правого глаза">−</button>
+                                <span class="dio-val" id="dioR">0.00</span>
+                                <button type="button" class="dio-btn" data-eye="r" data-step="1" aria-label="Увеличить диоптрию правого глаза">+</button>
+                            </div>
+                            <span class="dio-unit">диоптрии (D)</span>
+                        </div>
+                        <div class="dio-card">
+                            <small>Левый глаз</small>
+                            <div class="dio-row">
+                                <button type="button" class="dio-btn" data-eye="l" data-step="-1" aria-label="Уменьшить диоптрию левого глаза">−</button>
+                                <span class="dio-val" id="dioL">0.00</span>
+                                <button type="button" class="dio-btn" data-eye="l" data-step="1" aria-label="Увеличить диоптрию левого глаза">+</button>
+                            </div>
+                            <span class="dio-unit">диоптрии (D)</span>
+                        </div>
+                    </div>
+                    <label class="dio-same"><input type="checkbox" id="dioSame" checked> Диоптрии одинаковые на оба глаза</label>
+                    <label class="dio-same"><input type="checkbox" id="dioUnknown"> Не знаю свои диоптрии — помогите подобрать</label>
+                    <div class="o-nav">
+                        <button type="button" class="btn-submit" data-next="2">Далее →</button>
+                    </div>
+                    <p class="dio-hint" style="margin-top: 14px;">Нет рецепта? Это не проблема: отметьте галочку, и мы поможем определить параметры.</p>
+                </div>
+
+                <!-- ШАГ 2: ДАННЫЕ -->
+                <div class="ostep" data-step="2">
+                    <h3 style="font-family: 'Unbounded', sans-serif; font-size: 1.45rem; margin-bottom: 16px;">Данные для связи</h3>
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" placeholder="Иван Иванов" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" autocomplete="tel" inputmode="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email (необязательно — для чека и деталей заказа)</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+                    </div>
+                    <div class="form-group" id="addrGroup" hidden>
+                        <label for="addr">Адрес доставки</label>
+                        <textarea id="addr" class="o-field" rows="2" placeholder="Город, улица, дом, квартира"></textarea>
+                    </div>
+                    <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;">
+                    <div class="form-group qty-line">
+                        <label for="qtyVal">Количество комплектов</label>
+                        <div class="dio-row">
+                            <button type="button" class="dio-btn" id="qtyMinus" aria-label="Меньше комплектов">−</button>
+                            <span class="dio-val" id="qtyVal">1</span>
+                            <button type="button" class="dio-btn" id="qtyPlus" aria-label="Больше комплектов">+</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Доставка</label>
+                        <div class="opt-list">
+                            <label><input type="radio" name="delivery" value="Курьер по СПб и ЛО" checked> Курьер по Санкт-Петербургу и Ленинградской области (от 2 пар — бесплатно)</label>
+                            <label><input type="radio" name="delivery" value="Самовывоз в СПб"> Самовывоз в Санкт-Петербурге</label>
+                            <label><input type="radio" name="delivery" value="СДЭК / Почта"> СДЭК или Почта по России</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Комментарий (необязательно)</label>
+                        <textarea id="comment" class="o-field" rows="2" placeholder="Например: есть астигматизм — перезвоните"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="opt-list" style="margin-bottom:0;">
+                            <label style="margin-bottom:0;border-color:rgba(255,255,255,0.12);"><input type="checkbox" id="pdConsent" required>
+                            <span>Я согласен(а) на обработку персональных данных и принимаю <a href="/politika-konfidencialnosti.html" target="_blank" rel="noopener" style="color:var(--primary);">Политику конфиденциальности</a></span></label>
+                        </label>
+                    </div>
+                    <div class="o-nav">
+                        <button type="button" class="o-back" data-back="1">← Назад</button>
+                        <button type="button" class="btn-submit" data-next="3">Далее →</button>
+                    </div>
+                    <div class="o-err" id="oErr2" role="alert"></div>
+                </div>
+
+                <!-- ШАГ 3: ПРОВЕРКА И ОПЛАТА -->
+                <div class="ostep" data-step="3">
+                    <div id="oCheckWrap">
+                        <h3 style="font-family: 'Unbounded', sans-serif; font-size: 1.45rem; margin-bottom: 16px;">Проверьте заказ</h3>
+                        <div class="o-summary" id="oSummary"></div>
+                        <div class="o-nav">
+                            <button type="button" class="o-back" data-back="2">← Назад</button>
+                            <button type="submit" class="btn-submit" id="oSubmit">Оформить заказ</button>
+                        </div>
+                        <p class="dio-hint" style="margin-top:14px;">Нажимая «Оформить заказ», вы подтверждаете согласие с <a href="/publichnaya-oferta.html" target="_blank" rel="noopener" style="color:var(--primary);">офертой</a> и <a href="/politika-konfidencialnosti.html" target="_blank" rel="noopener" style="color:var(--primary);">политикой конфиденциальности</a>.</p>
+                        <div class="o-err" id="oErr3" role="alert"></div>
+                    </div>
+
+                    <div class="pay-box" id="payBox" hidden>
+                        <div class="o-ok" id="sentBox" hidden>Заказ отправлен — мы уже видим его в Telegram</div>
+                        <div class="o-fallback" id="fallbackBox" hidden>
+                            <p class="pay-note">Заказ готов. Скопируйте его и отправьте нам в Telegram — подтвердим рецепт, сроки и оплату.</p>
+                            <textarea id="fbText" readonly aria-label="Текст заказа"></textarea>
+                            <button type="button" class="o-copy" id="fbCopy">Скопировать заказ</button>
+                        </div>
+                        <h4 id="qrTitle" style="font-family: 'Unbounded', sans-serif; font-size: 1.15rem; margin: 4px 0 10px;">Оплата по QR (СБП)</h4>
+                        <div class="qr-wrap" id="qrWrap"><img id="qrImg" src="assets/images/qr-sbp.png" alt="QR-код для оплаты по СБП"></div>
+                        <p class="pay-note" id="payNoteSbp">Оплатите по QR с телефона через СБП. <b>В комментарии к платежу укажите номер заказа</b> — тогда мы сразу свяжем оплату и заказ.</p>
+                        <p class="pay-note" id="payAltNote" style="display:none;">Оплата после подтверждения заказа: свяжитесь с нами — согласуем рецепт, сроки и способ оплаты.</p>
+                        <div class="pay-oid">ЗАКАЗ <span id="payOid"></span></div>
+                        <div class="pay-sum" id="paySum"></div>
+                        <p class="pay-note">После оплаты пришлите скриншот в Telegram — подтвердим и начнём сборку.</p>
+                        <a class="tg-pay" href="https://t.me/+79990668884" target="_blank" rel="noopener">Открыть Telegram</a>
+                        <div class="o-nav" style="margin-top: 16px;">
+                            <button type="button" class="o-back" style="flex: 1;" onclick="closePopup()">Готово</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- COOKIE-УВЕДОМЛЕНИЕ (152-ФЗ) -->
+    <div id="cookieBar" role="dialog" aria-label="Уведомление о cookie" style="position:fixed;left:16px;right:16px;bottom:16px;z-index:900;max-width:640px;margin:0 auto;background:rgba(5,5,16,0.92);backdrop-filter:blur(15px);border:1px solid rgba(0,242,255,0.4);border-radius:16px;padding:16px 20px;display:none;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+        <span style="flex:1;min-width:220px;font-size:0.85rem;color:var(--text);">Мы используем cookie для работы сайта. Продолжая, вы соглашаетесь с <a href="/politika-konfidencialnosti.html" target="_blank" rel="noopener" style="color:var(--primary);">политикой конфиденциальности</a>.</span>
+        <button type="button" id="cookieOk" style="background:var(--primary);color:#000;border:0;border-radius:10px;padding:10px 22px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;">Понятно</button>
+    </div>
+    <script>
+        (function() {
+            try {
+                if (!localStorage.getItem('woptics_cookie_ok')) {
+                    var bar = document.getElementById('cookieBar');
+                    bar.style.display = 'flex';
+                    document.getElementById('cookieOk').addEventListener('click', function() {
+                        localStorage.setItem('woptics_cookie_ok', '1');
+                        bar.style.display = 'none';
+                    });
+                }
+            } catch (e) { /* приватный режим — просто не показываем */ }
+        })();
+    </script>
+    <script src="assets/js/site.js" defer></script>
 </body>
 </html>

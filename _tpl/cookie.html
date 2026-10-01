@@ -1,0 +1,19 @@
+    <!-- COOKIE-УВЕДОМЛЕНИЕ (152-ФЗ) -->
+    <div id="cookieBar" role="dialog" aria-label="Уведомление о cookie" style="position:fixed;left:16px;right:16px;bottom:16px;z-index:900;max-width:640px;margin:0 auto;background:rgba(5,5,16,0.92);backdrop-filter:blur(15px);border:1px solid rgba(0,242,255,0.4);border-radius:16px;padding:16px 20px;display:none;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+        <span style="flex:1;min-width:220px;font-size:0.85rem;color:var(--text);">Мы используем cookie для работы сайта. Продолжая, вы соглашаетесь с <a href="politika-konfidencialnosti.html" target="_blank" rel="noopener" style="color:var(--primary);">политикой конфиденциальности</a>.</span>
+        <button type="button" id="cookieOk" style="background:var(--primary);color:#000;border:0;border-radius:10px;padding:10px 22px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;">Понятно</button>
+    </div>
+    <script>
+        (function() {
+            try {
+                if (!localStorage.getItem('woptics_cookie_ok')) {
+                    var bar = document.getElementById('cookieBar');
+                    bar.style.display = 'flex';
+                    document.getElementById('cookieOk').addEventListener('click', function() {
+                        localStorage.setItem('woptics_cookie_ok', '1');
+                        bar.style.display = 'none';
+                    });
+                }
+            } catch (e) { /* приватный режим — просто не показываем */ }
+        })();
+    </script>
