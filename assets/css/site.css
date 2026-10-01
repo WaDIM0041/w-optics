@@ -39,10 +39,12 @@
         header { background: rgba(5, 5, 16, 0.6); backdrop-filter: blur(20px); padding: 15px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         nav { display: flex; justify-content: space-between; align-items: center; height: 40px; }
         .logo-container { perspective: 200px; display: flex; align-items: center; height: 100%; }
-        .logo { height: 32px; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); filter: drop-shadow(0 4px 10px rgba(0, 242, 255, 0.4)); }
+        .logo { height: 32px; width: auto; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); filter: drop-shadow(0 4px 10px rgba(0, 242, 255, 0.4)); }
         .logo-container:hover .logo { transform: rotateY(40deg) rotateX(10deg); }
         .nav-links a { text-decoration: none; color: var(--text-muted); margin-left: 30px; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; line-height: 40px; }
         .nav-links a:hover { color: var(--primary); }
+        .nav-links a.nav-home { color: #000; background: var(--primary); border-radius: 40px; padding: 8px 22px; margin-left: 0; font-weight: 700; box-shadow: 0 0 18px rgba(0, 242, 255, 0.45); transition: box-shadow 0.3s, transform 0.3s; }
+        .nav-links a.nav-home:hover { color: #000; box-shadow: 0 0 32px rgba(0, 242, 255, 0.8); transform: translateY(-2px); }
 
         /* HERO & BANNER */
         .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 0 100px; }
@@ -255,7 +257,7 @@
         .footer-col ul li { margin-bottom: 15px; }
         .footer-col ul li a { color: var(--text); text-decoration: none; font-family: var(--mono); font-size: 0.9rem; transition: transform 0.3s ease, color 0.3s ease; display: inline-block; }
         .footer-col ul li a:hover { color: var(--primary); transform: translateY(-4px); }
-        .footer-logo { height: 40px; margin-bottom: 20px; }
+        .footer-logo { height: 40px; width: auto; margin-bottom: 20px; }
         .footer-desc { color: var(--text-muted); font-size: 0.9rem; max-width: 300px; }
         .footer-heading { font-family: 'Unbounded', sans-serif; font-size: clamp(4rem, 15vw, 12rem); font-weight: 900; text-align: center; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); line-height: 1; letter-spacing: -0.02em; }
         .footer-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; font-family: var(--mono); font-size: 0.8rem; color: var(--text-muted); }
@@ -290,6 +292,7 @@
             h2 { font-size: 2.2rem; margin-bottom: 40px; line-height: 1.15; }
             .problem-grid, .showcase-grid, .steps-grid, .reviews, .stats, .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .nav-links a { display: none; }
+            .nav-links a.nav-home { display: inline-block; }
             .showcase-img { height: 280px; }
             .showcase-text { padding: 25px; }
             .showcase-text h3 { font-size: 1.4rem; }
