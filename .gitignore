@@ -7,6 +7,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Build sources (page assembler fragments — local only)
+_tpl/
+
 # Временные файлы
 *.zip
 nul
