@@ -18,6 +18,9 @@
     <meta property="og:image" content="https://woptic.annakam.ru/assets/images/banner1-v2.webp">
     <meta property="og:url" content="https://woptic.annakam.ru/">
     <meta name="twitter:card" content="summary_large_image">
+    <!-- Yandex.Metrika counter — при создании счётчика заменить YM_ID в основном скрипте -->
+    <noscript><div><img src="https://mc.yandex.ru/watch/" referrerpolicy="no-referrer" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -37,6 +40,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Unbounded:wght@400;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <noscript><style>
+        #preloader { display: none !important; }
+        section.sec { opacity: 1 !important; transform: none !important; }
+        .reveal { opacity: 1 !important; transform: none !important; }
+        .banner-img { opacity: 1 !important; }
+    </style></noscript>
     <style>
         :root {
             --primary: #00f2ff;
@@ -58,7 +67,7 @@
 
         /* PRELOADER */
         #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
-        #preloader.hidden { opacity: 0; visibility: hidden; }
+        #preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
         .truck-wrapper { width: 150px; height: 60px; position: relative; overflow: hidden; }
         .truck-body { width: 100px; height: 40px; background: var(--primary); position: absolute; bottom: 0; left: 0; border-radius: 5px; animation: truckMove 2s infinite linear; }
         .truck-body::before { content: ''; position: absolute; bottom: 0; right: -30px; width: 40px; height: 25px; background: var(--accent); border-radius: 5px; }
@@ -669,8 +678,11 @@
             </div>
             <div class="footer-heading" data-px="-0.05">W OPTICS</div>
             <div class="footer-bottom">
-                <span>© 2026 W OPTICS. ALL RIGHTS RESERVED.</span>
-                <span><a href="#" style="color: var(--text-muted); text-decoration: none;">PRIVACY POLICY</a> | <a href="#" style="color: var(--text-muted); text-decoration: none;">TERMS</a></span>
+                <span>© 2026 W OPTICS. Все права защищены.</span>
+                <span><a href="politika-konfidencialnosti.html" style="color: var(--text-muted); text-decoration: none;">Политика конфиденциальности</a> · <a href="soglasie-na-obrabotku.html" style="color: var(--text-muted); text-decoration: none;">Согласие на обработку данных</a> · <a href="publichnaya-oferta.html" style="color: var(--text-muted); text-decoration: none;">Оферта</a> · <a href="garantia-i-vozvrat.html" style="color: var(--text-muted); text-decoration: none;">Гарантия и возврат</a> · <a href="dostavka-i-oplata.html" style="color: var(--text-muted); text-decoration: none;">Доставка и оплата</a></span>
+            </div>
+            <div class="footer-bottom" style="margin-top: 14px;">
+                <span>{{РЕКВИЗИТЫ}} — Санкт-Петербург</span>
             </div>
             <div class="footer-credit">
                 <a class="ak-badge" href="https://annakam.ru" target="_blank" rel="noopener" aria-label="Сайт разработан Анна Камчатка — annakam.ru" title="Сайт разработан Анна Камчатка — annakam.ru">
@@ -731,9 +743,11 @@
                         </div>
                     </div>
                     <label class="dio-same"><input type="checkbox" id="dioSame" checked> Диоптрии одинаковые на оба глаза</label>
+                    <label class="dio-same"><input type="checkbox" id="dioUnknown"> Не знаю свои диоптрии — помогите подобрать</label>
                     <div class="o-nav">
                         <button type="button" class="btn-submit" data-next="2">Далее →</button>
                     </div>
+                    <p class="dio-hint" style="margin-top: 14px;">Нет рецепта? Это не проблема: отметьте галочку, и мы поможем определить параметры.</p>
                 </div>
 
                 <!-- ШАГ 2: ДАННЫЕ -->
@@ -747,6 +761,15 @@
                         <label for="phone">Телефон</label>
                         <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" autocomplete="tel" inputmode="tel">
                     </div>
+                    <div class="form-group">
+                        <label for="email">Email (необязательно — для чека и деталей заказа)</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+                    </div>
+                    <div class="form-group" id="addrGroup" hidden>
+                        <label for="addr">Адрес доставки</label>
+                        <textarea id="addr" class="o-field" rows="2" placeholder="Город, улица, дом, квартира"></textarea>
+                    </div>
+                    <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;">
                     <div class="form-group qty-line">
                         <label for="qtyVal">Количество комплектов</label>
                         <div class="dio-row">
@@ -767,6 +790,12 @@
                         <label for="comment">Комментарий (необязательно)</label>
                         <textarea id="comment" class="o-field" rows="2" placeholder="Например: есть астигматизм — перезвоните"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label class="opt-list" style="margin-bottom:0;">
+                            <label style="margin-bottom:0;border-color:rgba(255,255,255,0.12);"><input type="checkbox" id="pdConsent" required>
+                            <span>Я согласен(а) на обработку персональных данных и принимаю <a href="politika-konfidencialnosti.html" target="_blank" rel="noopener" style="color:var(--primary);">Политику конфиденциальности</a></span></label>
+                        </label>
+                    </div>
                     <div class="o-nav">
                         <button type="button" class="o-back" data-back="1">← Назад</button>
                         <button type="button" class="btn-submit" data-next="3">Далее →</button>
@@ -783,21 +812,23 @@
                             <button type="button" class="o-back" data-back="2">← Назад</button>
                             <button type="submit" class="btn-submit" id="oSubmit">Оформить заказ</button>
                         </div>
+                        <p class="dio-hint" style="margin-top:14px;">Нажимая «Оформить заказ», вы подтверждаете согласие с <a href="publichnaya-oferta.html" target="_blank" rel="noopener" style="color:var(--primary);">офертой</a> и <a href="politika-konfidencialnosti.html" target="_blank" rel="noopener" style="color:var(--primary);">политикой конфиденциальности</a>.</p>
                         <div class="o-err" id="oErr3" role="alert"></div>
                     </div>
 
                     <div class="pay-box" id="payBox" hidden>
                         <div class="o-ok" id="sentBox" hidden>Заказ отправлен — мы уже видим его в Telegram</div>
                         <div class="o-fallback" id="fallbackBox" hidden>
-                            <p class="pay-note">Соединение с ботом ещё не настроено — скопируйте текст заказа и отправьте нам в Telegram:</p>
+                            <p class="pay-note">Заказ готов. Скопируйте его и отправьте нам в Telegram — подтвердим рецепт, сроки и оплату.</p>
                             <textarea id="fbText" readonly aria-label="Текст заказа"></textarea>
-                            <button type="button" class="o-copy" id="fbCopy">Скопировать текст заказа</button>
+                            <button type="button" class="o-copy" id="fbCopy">Скопировать заказ</button>
                         </div>
-                        <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.15rem; margin: 4px 0 10px;">Оплата по QR (СБП)</h4>
+                        <h4 id="qrTitle" style="font-family: 'Unbounded', sans-serif; font-size: 1.15rem; margin: 4px 0 10px;">Оплата по QR (СБП)</h4>
                         <div class="qr-wrap" id="qrWrap"><img id="qrImg" src="assets/images/qr-sbp.png" alt="QR-код для оплаты по СБП"></div>
+                        <p class="pay-note" id="payNoteSbp">Оплатите по QR с телефона через СБП. <b>В комментарии к платежу укажите номер заказа</b> — тогда мы сразу свяжем оплату и заказ.</p>
+                        <p class="pay-note" id="payAltNote" style="display:none;">Оплата после подтверждения заказа: свяжитесь с нами — согласуем рецепт, сроки и способ оплаты.</p>
                         <div class="pay-oid">ЗАКАЗ <span id="payOid"></span></div>
                         <div class="pay-sum" id="paySum"></div>
-                        <p class="pay-note">Оплатите по QR с телефона через СБП. <b>В комментарии к платежу укажите номер заказа</b> — тогда мы сразу свяжем оплату и заказ.</p>
                         <p class="pay-note">После оплаты пришлите скриншот в Telegram — подтвердим и начнём сборку.</p>
                         <a class="tg-pay" href="https://t.me/+79990668884" target="_blank" rel="noopener">Открыть Telegram</a>
                         <div class="o-nav" style="margin-top: 16px;">
@@ -812,13 +843,22 @@
     <script>
         'use strict';
 
-        // --- PRELOADER ---
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const preloader = document.getElementById('preloader');
-                if (preloader) preloader.classList.add('hidden');
-            }, 2000);
-        });
+        // --- PRELOADER: показываем только при первом заходе в сессии, снимаем быстро ---
+        (function() {
+            const preloader = document.getElementById('preloader');
+            if (!preloader) return;
+            if (sessionStorage.getItem('woptics_intro')) {
+                preloader.classList.add('hidden');
+                return;
+            }
+            sessionStorage.setItem('woptics_intro', '1');
+            const hide = () => preloader.classList.add('hidden');
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() { setTimeout(hide, 400); }, { once: true });
+            } else {
+                setTimeout(hide, 400);
+            }
+        })();
 
         // Уважение к настройкам пользователя (пониженное движение)
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1017,6 +1057,23 @@
         // Пустая строка: заказ показывается покупателю для ручной отправки в Telegram.
         const TG_ENDPOINT = '';
 
+        // === ЯНДЕКС.МЕТРИКА ===
+        // Вставить сюда реальный номер счётчика (число) — цели заработают автоматически.
+        // Пример: const YM_ID = 12345678;
+        const YM_ID = null; // TODO: номер счётчика Яндекс.Метрики
+        function trackGoal(name) {
+            if (YM_ID && window.ym) {
+                try { window.ym(YM_ID, 'reachGoal', name); } catch (e) { /* тихо */ }
+            }
+        }
+        if (YM_ID) {
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+            ym(YM_ID, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+        }
+
         // --- ORDER WIZARD: диоптрии → данные → оплата ---
         (function() {
             const PRICE = 2990;
@@ -1059,6 +1116,39 @@
             document.getElementById('qtyMinus').addEventListener('click', () => { qty = Math.max(1, qty - 1); qtyVal.textContent = qty; });
             document.getElementById('qtyPlus').addEventListener('click', () => { qty = Math.min(9, qty + 1); qtyVal.textContent = qty; });
 
+            // --- «не знаю диоптрии»: блокируем степеры ---
+            const dioUnknown = document.getElementById('dioUnknown');
+            dioUnknown.addEventListener('change', () => {
+                form.querySelectorAll('.dio-btn[data-eye]').forEach(b => { b.disabled = dioUnknown.checked; });
+            });
+
+            // --- маска телефона +7 (999) 999-99-99 ---
+            const phoneEl = document.getElementById('phone');
+            phoneEl.addEventListener('input', () => {
+                let d = phoneEl.value.replace(/\D/g, '');
+                if (d.startsWith('8')) d = '7' + d.slice(1);
+                if (d && !d.startsWith('7')) d = '7' + d;
+                d = d.slice(0, 11);
+                let out = '';
+                if (d.length) out = '+7';
+                if (d.length > 1) out += ' (' + d.slice(1, 4);
+                if (d.length >= 4) out += ') ' + d.slice(4, 7);
+                if (d.length >= 7) out += '-' + d.slice(7, 9);
+                if (d.length >= 9) out += '-' + d.slice(9, 11);
+                phoneEl.value = out;
+            });
+
+            // --- адрес доставки: обязателен для курьера и СДЭК/Почты, скрыт для самовывоза ---
+            const addrGroup = document.getElementById('addrGroup');
+            const addrEl = document.getElementById('addr');
+            const deliveryName = () => (form.querySelector('input[name="delivery"]:checked') || {}).value || '';
+            function syncAddr() {
+                const need = deliveryName() !== 'Самовывоз в СПб';
+                addrGroup.hidden = !need;
+            }
+            form.querySelectorAll('input[name="delivery"]').forEach(r => r.addEventListener('change', syncAddr));
+            syncAddr();
+
             // --- шаги мастера ---
             let curStep = 1;
             function goStep(n) {
@@ -1072,14 +1162,20 @@
             function validContacts() {
                 const name = document.getElementById('name').value.trim();
                 const phone = document.getElementById('phone').value.replace(/\D/g, '');
+                const email = document.getElementById('email').value.trim();
                 if (name.length < 2) { err2.textContent = 'Укажите имя (минимум 2 символа).'; return false; }
-                if (phone.length < 10) { err2.textContent = 'Проверьте номер телефона.'; return false; }
+                if (phone.length !== 11) { err2.textContent = 'Проверьте номер телефона — нужно 11 цифр.'; return false; }
+                if (email && !/^\S+@\S+\.\S+$/.test(email)) { err2.textContent = 'Проверьте адрес email.'; return false; }
+                if (!addrGroup.hidden && addrEl.value.trim().length < 5) { err2.textContent = 'Укажите адрес доставки — без него заказ не собрать.'; return false; }
+                if (!document.getElementById('pdConsent').checked) { err2.textContent = 'Чтобы оформить заказ, подтвердите согласие на обработку данных.'; return false; }
                 err2.textContent = '';
                 return true;
             }
             form.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => {
                 const n = Number(b.dataset.next);
                 if (n === 3 && !validContacts()) return;
+                if (n === 2) trackGoal('step_dioptries');
+                if (n === 3) trackGoal('step_contacts');
                 goStep(n);
             }));
             form.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => {
@@ -1093,15 +1189,20 @@
             function collectOrder() {
                 const del = form.querySelector('input[name="delivery"]:checked');
                 return {
-                    oid: 'W-' + Math.floor(1000 + Math.random() * 9000),
+                    oid: 'W-' + Date.now().toString(36).toUpperCase().slice(-4) + '-' + Math.floor(10 + Math.random() * 89),
                     name: document.getElementById('name').value.trim(),
                     phone: document.getElementById('phone').value.trim(),
-                    dioR: fmtD(dio.r, true),
-                    dioL: fmtD(dio.l, true),
+                    email: document.getElementById('email').value.trim(),
+                    dioR: dioUnknown.checked ? '' : fmtD(dio.r, true),
+                    dioL: dioUnknown.checked ? '' : fmtD(dio.l, true),
+                    dioUnknown: dioUnknown.checked,
                     qty: qty,
                     delivery: del ? del.value : '',
+                    addr: addrGroup.hidden ? '' : addrEl.value.trim(),
                     comment: document.getElementById('comment').value.trim(),
                     total: PRICE * qty,
+                    consent: true,
+                    consentTs: new Date().toISOString(),
                     page: location.href,
                     ts: new Date().toLocaleString('ru-RU')
                 };
@@ -1113,12 +1214,16 @@
                 const o = collectOrder();
                 const rows = [
                     ['Имя', o.name],
-                    ['Телефон', o.phone],
-                    ['Диоптрии', 'правый ' + o.dioR + ' D'],
-                    ['', 'левый ' + o.dioL + ' D'],
+                    ['Телефон', o.phone]
+                ];
+                if (o.email) rows.push(['Email', o.email]);
+                rows.push(
+                    ['Диоптрии', o.dioUnknown ? 'не знает — нужна помощь' : 'правый ' + o.dioR + ' D'],
+                    ['', o.dioUnknown ? '' : 'левый ' + o.dioL + ' D'],
                     ['Комплектов', String(o.qty)],
                     ['Доставка', o.delivery]
-                ];
+                );
+                if (o.addr) rows.push(['Адрес', o.addr]);
                 if (o.comment) rows.push(['Комментарий', o.comment]);
                 let html = rows.map(r => '<div><span>' + escapeHtml(r[0]) + '</span><b>' + escapeHtml(r[1]) + '</b></div>').join('');
                 html += '<div class="o-total"><span>Итого (товары)</span><b>' + money(o.total) + '</b></div>';
@@ -1129,10 +1234,13 @@
                     '\uD83D\uDED2 ЗАКАЗ ' + o.oid + ' (W OPTICS)',
                     'Имя: ' + o.name,
                     'Телефон: ' + o.phone,
-                    'Диоптрии: правый ' + o.dioR + ' D, левый ' + o.dioL + ' D',
+                    o.email ? 'Email: ' + o.email : null,
+                    'Диоптрии: ' + (o.dioUnknown ? 'не знает, нужна помощь' : 'правый ' + o.dioR + ' D, левый ' + o.dioL + ' D'),
                     'Комплектов: ' + o.qty,
                     'Доставка: ' + o.delivery,
+                    o.addr ? 'Адрес: ' + o.addr : null,
                     o.comment ? 'Комментарий: ' + o.comment : null,
+                    'Согласие на ПД: да, ' + o.consentTs,
                     'Сумма (товары): ' + money(o.total)
                 ].filter(Boolean).join('\n');
             }
@@ -1146,6 +1254,11 @@
                     return;
                 }
                 if (!validContacts()) { goStep(2); return; }
+                // honeypot: заполнено — бот, молча не отправляем
+                if (form.querySelector('input[name="company"]').value) {
+                    document.getElementById('oErr3').textContent = 'Не удалось отправить заказ. Позвоните или напишите нам в Telegram.';
+                    return;
+                }
                 const btn = document.getElementById('oSubmit');
                 btn.disabled = true;
                 btn.textContent = 'Отправляем\u2026';
@@ -1170,14 +1283,17 @@
                 if (!sent) document.getElementById('fbText').value = orderText(o);
                 document.getElementById('payOid').textContent = o.oid;
                 document.getElementById('paySum').textContent = money(o.total);
+                // цели метрики: доставка/адрес видны на экране подтверждения
+                trackGoal('order_sent');
             });
 
             // --- копирование текста заказа (ручной режим) ---
             document.getElementById('fbCopy').addEventListener('click', function() {
                 const ta = document.getElementById('fbText');
+                trackGoal('order_copy');
                 const done = () => {
                     this.textContent = 'Скопировано ✓';
-                    setTimeout(() => { this.textContent = 'Скопировать текст заказа'; }, 2000);
+                    setTimeout(() => { this.textContent = 'Скопировать заказ'; }, 2000);
                 };
                 ta.select();
                 if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1185,26 +1301,31 @@
                 } else { document.execCommand('copy'); done(); }
             });
 
-            // --- QR: пока картинки нет — заглушка ---
+            // --- QR: нет картинки — скрываем блок QR полностью, оставляем Telegram-альтернативу ---
             const qrImg = document.getElementById('qrImg');
             const qrFallback = function() {
                 const wrap = document.getElementById('qrWrap');
-                if (wrap && !wrap.dataset.fallback) {
-                    wrap.dataset.fallback = '1';
-                    wrap.innerHTML = '<div class="qr-miss">QR-код (СБП)<br>будет добавлен</div>';
-                }
+                if (wrap) wrap.style.display = 'none';
+                const h = document.getElementById('qrTitle');
+                if (h) h.style.display = 'none';
+                const note = document.getElementById('payNoteSbp');
+                if (note) note.style.display = 'none';
+                const alt = document.getElementById('payAltNote');
+                if (alt) alt.style.display = 'block';
             };
             qrImg.addEventListener('error', qrFallback);
             if (qrImg.complete && qrImg.naturalWidth === 0) qrFallback();
 
-            // --- при каждом открытии попапа — шаг 1 ---
+            // --- при каждом открытии попапа — шаг 1 (цель open_form — один раз за сессию) ---
             const origOpen = window.openPopup;
+            let openFormTracked = false;
             window.openPopup = function() {
                 err2.textContent = '';
                 err3.textContent = '';
                 document.getElementById('oCheckWrap').hidden = false;
                 document.getElementById('payBox').hidden = true;
                 goStep(1);
+                if (!openFormTracked) { trackGoal('open_form'); openFormTracked = true; }
                 if (origOpen) origOpen();
             };
         })();
@@ -1252,6 +1373,15 @@
                 window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
             });
         })();
+
+        // --- ЦЕЛИ ПО КЛИКАМ: телефон и Telegram ---
+        document.addEventListener('click', function(e) {
+            const a = e.target.closest('a[href]');
+            if (!a) return;
+            const href = a.getAttribute('href');
+            if (href.startsWith('tel:')) trackGoal('phone_click');
+            else if (href.includes('t.me')) trackGoal('tg_click');
+        }, { passive: true });
 
         // --- СЕКЦИИ ПЛАВНО ПОЯВЛЯЮТСЯ ПРИ СКРОЛЛЕ ---
         document.querySelectorAll('section:not(#hero)').forEach(s => s.classList.add('sec'));
@@ -1337,6 +1467,26 @@
                 el.style.setProperty('--ry', '0deg');
             });
         }
+    </script>
+
+    <!-- COOKIE-УВЕДОМЛЕНИЕ (152-ФЗ) -->
+    <div id="cookieBar" role="dialog" aria-label="Уведомление о cookie" style="position:fixed;left:16px;right:16px;bottom:16px;z-index:900;max-width:640px;margin:0 auto;background:rgba(5,5,16,0.92);backdrop-filter:blur(15px);border:1px solid rgba(0,242,255,0.4);border-radius:16px;padding:16px 20px;display:none;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+        <span style="flex:1;min-width:220px;font-size:0.85rem;color:var(--text);">Мы используем cookie для работы сайта. Продолжая, вы соглашаетесь с <a href="politika-konfidencialnosti.html" target="_blank" rel="noopener" style="color:var(--primary);">политикой конфиденциальности</a>.</span>
+        <button type="button" id="cookieOk" style="background:var(--primary);color:#000;border:0;border-radius:10px;padding:10px 22px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;">Понятно</button>
+    </div>
+    <script>
+        (function() {
+            try {
+                if (!localStorage.getItem('woptics_cookie_ok')) {
+                    var bar = document.getElementById('cookieBar');
+                    bar.style.display = 'flex';
+                    document.getElementById('cookieOk').addEventListener('click', function() {
+                        localStorage.setItem('woptics_cookie_ok', '1');
+                        bar.style.display = 'none';
+                    });
+                }
+            } catch (e) { /* приватный режим — просто не показываем */ }
+        })();
     </script>
 </body>
 </html>

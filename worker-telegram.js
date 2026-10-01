@@ -21,10 +21,13 @@ export default {
         '',
         '👤 Имя: ' + (d.name || ''),
         '📞 Телефон: ' + (d.phone || ''),
-        '👓 Диоптрии: правый ' + (d.dioR || '0.00') + ' D, левый ' + (d.dioL || '0.00') + ' D',
+        d.email ? '📧 Email: ' + d.email : null,
+        '👓 Диоптрии: ' + (d.dioUnknown ? 'не знает, нужна помощь' : 'правый ' + (d.dioR || '0.00') + ' D, левый ' + (d.dioL || '0.00') + ' D'),
         '📦 Комплектов: ' + (d.qty || 1),
         '🚚 Доставка: ' + (d.delivery || ''),
-      ];
+        d.addr ? '📍 Адрес: ' + d.addr : null,
+        d.consent ? '✅ Согласие на ПД: да, ' + (d.consentTs || '') : '⚠️ Согласие на ПД: нет',
+      ].filter(Boolean);
       if (d.comment) lines.push('💬 Комментарий: ' + d.comment);
       lines.push('💰 Сумма (товары): ' + (d.total || 0) + ' ₽');
       if (d.ts) lines.push('🕐 ' + d.ts);
