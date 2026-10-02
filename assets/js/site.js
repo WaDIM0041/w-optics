@@ -384,7 +384,7 @@
                     addr: addrGroup.hidden ? '' : addrEl.value.trim(),
                     comment: document.getElementById('comment').value.trim(),
                     total: PRICE * qty,
-                    consent: true,
+                    consent: document.getElementById('pdConsent').checked,
                     consentTs: new Date().toISOString(),
                     page: location.href,
                     ts: new Date().toLocaleString('ru-RU')
@@ -414,12 +414,14 @@
             }
             function orderText(o) {
                 return [
-                    '\uD83D\uDED2 ЗАКАЗ ' + o.oid + ' (W OPTICS)',
+                    'ЗАЯВКА ' + o.oid + ' (W OPTICS)',
                     'Имя: ' + o.name,
                     'Телефон: ' + o.phone,
                     o.email ? 'Email: ' + o.email : null,
                     'Диоптрии: ' + (o.dioUnknown ? 'не знает, нужна помощь' : 'правый ' + o.dioR + ' D, левый ' + o.dioL + ' D'),
                     'Комплектов: ' + o.qty,
+                    'Линзы: обычные сферические, без специальных покрытий',
+                    'Рецепт и межзрачковое расстояние: уточнить перед изготовлением',
                     'Доставка: ' + o.delivery,
                     o.addr ? 'Адрес: ' + o.addr : null,
                     o.comment ? 'Комментарий: ' + o.comment : null,
@@ -444,7 +446,8 @@
                 }
                 const btn = document.getElementById('oSubmit');
                 btn.disabled = true;
-                btn.textContent = 'Отправляем\u2026';
+                const submitLabel = btn.textContent;
+                btn.textContent = TG_ENDPOINT ? 'Отправляем\u2026' : 'Готовим заявку\u2026';
                 const o = collectOrder();
                 let sent = false;
                 if (TG_ENDPOINT) {
@@ -452,13 +455,15 @@
                         const r = await fetch(TG_ENDPOINT, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(o)
+                            body: JSON.stringify(o),
+                            signal: AbortSignal.timeout(12000)
                         });
-                        sent = r.ok;
+                        const result = await r.json();
+                        sent = r.ok && result.ok === true;
                     } catch (e2) { sent = false; }
                 }
                 btn.disabled = false;
-                btn.textContent = 'Оформить заказ';
+                btn.textContent = submitLabel;
                 document.getElementById('oCheckWrap').hidden = true;
                 document.getElementById('payBox').hidden = false;
                 document.getElementById('sentBox').hidden = !sent;
@@ -467,21 +472,29 @@
                 document.getElementById('payOid').textContent = o.oid;
                 document.getElementById('paySum').textContent = money(o.total);
                 // цели метрики: доставка/адрес видны на экране подтверждения
-                trackGoal('order_sent');
+                trackGoal(sent ? 'order_sent' : 'order_prepared');
             });
 
             // --- копирование текста заказа (ручной режим) ---
             document.getElementById('fbCopy').addEventListener('click', function() {
                 const ta = document.getElementById('fbText');
-                trackGoal('order_copy');
                 const done = () => {
+                    trackGoal('order_copy');
                     this.textContent = 'Скопировано ✓';
                     setTimeout(() => { this.textContent = 'Скопировать заказ'; }, 2000);
                 };
+                const manualCopy = () => {
+                    ta.focus();
+                    ta.select();
+                    try {
+                        if (document.execCommand('copy')) { done(); return; }
+                    } catch (error) { /* Keep selected text for manual copying. */ }
+                    this.textContent = 'Выделите и скопируйте текст';
+                };
                 ta.select();
                 if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(ta.value).then(done, () => { document.execCommand('copy'); done(); });
-                } else { document.execCommand('copy'); done(); }
+                    navigator.clipboard.writeText(ta.value).then(done, manualCopy);
+                } else { manualCopy(); }
             });
 
             // --- QR: нет картинки — скрываем блок QR полностью, оставляем Telegram-альтернативу ---
@@ -496,8 +509,10 @@
                 const alt = document.getElementById('payAltNote');
                 if (alt) alt.style.display = 'block';
             };
-            qrImg.addEventListener('error', qrFallback);
-            if (qrImg.complete && qrImg.naturalWidth === 0) qrFallback();
+            if (qrImg) {
+                qrImg.addEventListener('error', qrFallback);
+                if (qrImg.complete && qrImg.naturalWidth === 0) qrFallback();
+            }
 
             // --- при каждом открытии попапа — шаг 1 (цель open_form — один раз за сессию) ---
             const origOpen = window.openPopup;

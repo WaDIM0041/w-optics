@@ -39,7 +39,7 @@
                 <img src="../assets/images/logo.webp" width="644" height="472" alt="W OPTICS — логотип" class="logo">
             </div>
             <div class="nav-links">
-                <a href="/" class="nav-home">⌂ Главная</a>
+                <a href="../index.html" class="nav-home">⌂ Главная</a>
                 <a href="tel:+79990668884">Позвонить</a>
                 <a href="../#problem">Зачем нужны 2 в 1</a>
                 <a href="../#solution">Комплект</a>
@@ -56,8 +56,8 @@
 <div class="poleznoe-grid" style="grid-template-columns: 1fr 1fr;">
       <a class="poleznoe-card" href="chto-znachit-cifry-v-recepte.html"><h3>Что означают цифры в рецепте: SPH, CYL, AX, PD</h3><p>Разбираем обозначения за пять минут: какие цифры нужны для заказа очков.</p></a>
       <a class="poleznoe-card" href="klipony-ili-hameleony.html"><h3>Клипоны или хамелеоны: что выбрать</h3><p>Честное сравнение съёмной насадки и фотохромных линз: машина, скорость, цена.</p></a>
-      <a class="poleznoe-card" href="ochki-dlya-vozhdeniya.html"><h3>Очки для вождения: антиблик важнее тонировки</h3><p>Что реально помогает за рулём днём и ночью, а что только мешает.</p></a>
-      <a class="poleznoe-card" href="dve-pary-ili-odna.html"><h3>Две пары или одна с насадкой: считаем деньги</h3><p>Во что обходится вторая пара с диоптриями за пару лет.</p></a>
+      <a class="poleznoe-card" href="ochki-dlya-vozhdeniya.html"><h3>Очки с насадкой для солнечной поездки</h3><p>Что реально помогает за рулём днём и ночью, а что только мешает.</p></a>
+      <a class="poleznoe-card" href="dve-pary-ili-odna.html"><h3>Две пары или один комплект с насадкой</h3><p>Сравниваем удобство хранения и смены очков.</p></a>
       <a class="poleznoe-card" href="kak-zakazat-ochki-online.html"><h3>Как заказать очки онлайн без ошибок</h3><p>Пошагово: рецепт, посадка, оформление, подтверждение, получение.</p></a>
 </div>
 <p class="more" style="margin-top:36px;">Страницы: <a href="../klipony.html">клипоны</a> · <a href="../dlya-vozhdeniya.html">для вождения</a> · <a href="../dostavka-i-oplata.html">доставка и оплата</a> · <a href="../">главная</a>.</p>
@@ -70,7 +70,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <img src="../assets/images/logo.webp" width="644" height="472" alt="W OPTICS — логотип" class="footer-logo" loading="lazy" decoding="async">
-                    <p class="footer-desc">Солнцезащитные очки для зрения с магнитной насадкой. 2 в 1 для водителей и спорта.</p>
+                    <p class="footer-desc">Солнцезащитные очки для зрения с магнитной насадкой. Линзы под каждый глаз. Один комплект для дома и улицы.</p>
                 </div>
                 <div class="footer-col">
                     <h4>МЕНЮ</h4>
@@ -84,12 +84,12 @@
                 <div class="footer-col">
                     <h4>СТРАНИЦЫ</h4>
                     <ul>
-                        <li><a href="klipony.html">Клипоны</a></li>
-                        <li><a href="dlya-vozhdeniya.html">Для вождения</a></li>
-                        <li><a href="o-nas.html">О нас</a></li>
+                        <li><a href="../klipony.html">Клипоны</a></li>
+                        <li><a href="../dlya-vozhdeniya.html">Для вождения</a></li>
+                        <li><a href="../o-nas.html">О нас</a></li>
                         <li><a href="../dostavka-i-oplata.html">Доставка и оплата</a></li>
                         <li><a href="../garantia-i-vozvrat.html">Гарантия и возврат</a></li>
-                        <li><a href="blog/">Блог</a></li>
+                        <li><a href="../blog/">Блог</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -141,7 +141,7 @@
     <button class="to-top" id="toTop" type="button" aria-label="Наверх">TOP</button>
 
 
-    <button class="to-top" id="toTop" type="button" aria-label="Наверх">TOP</button>
+
     <!-- POPUP: ORDER WIZARD (диоптрии → данные → оплата) -->
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup-content">
@@ -149,13 +149,13 @@
             <div class="osteps" id="osteps">
                 <span class="on">1 · Диоптрии</span>
                 <span>2 · Данные</span>
-                <span>3 · Оплата</span>
+                <span>3 · Проверка</span>
             </div>
             <form id="orderForm" novalidate>
                 <!-- ШАГ 1: ДИОПТРИИ -->
                 <div class="ostep on" data-step="1">
                     <h3 style="font-family: 'Unbounded', sans-serif; font-size: 1.45rem; margin-bottom: 10px;">Ваши диоптрии</h3>
-                    <p class="dio-hint">Шаг 0.25, от −12.00 до +6.00. Возьмите значения из рецепта либо оставьте 0.00, если очки без диоптрий.</p>
+                    <p class="dio-hint">Укажите SPH из рецепта на очки для каждого глаза. Обычные сферические линзы; разные диоптрии входят в цену. Возможность изготовления подтвердим по рецепту.</p>
                     <div class="dio-grid">
                         <div class="dio-card">
                             <small>Правый глаз</small>
@@ -177,11 +177,11 @@
                         </div>
                     </div>
                     <label class="dio-same"><input type="checkbox" id="dioSame" checked> Диоптрии одинаковые на оба глаза</label>
-                    <label class="dio-same"><input type="checkbox" id="dioUnknown"> Не знаю свои диоптрии — помогите подобрать</label>
+                    <label class="dio-same"><input type="checkbox" id="dioUnknown"> Нет рецепта — хочу уточнить порядок заказа</label>
                     <div class="o-nav">
                         <button type="button" class="btn-submit" data-next="2">Далее →</button>
                     </div>
-                    <p class="dio-hint" style="margin-top: 14px;">Нет рецепта? Это не проблема: отметьте галочку, и мы поможем определить параметры.</p>
+                    <p class="dio-hint" style="margin-top: 14px;">Для изготовления нужен рецепт на очки с SPH для каждого глаза и межзрачковым расстоянием (PD). Если рецепта нет, сначала проверьте зрение у специалиста.</p>
                 </div>
 
                 <!-- ШАГ 2: ДАННЫЕ -->
@@ -222,7 +222,7 @@
                     </div>
                     <div class="form-group">
                         <label for="comment">Комментарий (необязательно)</label>
-                        <textarea id="comment" class="o-field" rows="2" placeholder="Например: есть астигматизм — перезвоните"></textarea>
+                        <textarea id="comment" class="o-field" rows="2" placeholder="Например: хочу уточнить размер оправы"></textarea>
                     </div>
                     <div class="form-group">
                         <label class="opt-list" style="margin-bottom:0;">
@@ -251,20 +251,17 @@
                     </div>
 
                     <div class="pay-box" id="payBox" hidden>
-                        <div class="o-ok" id="sentBox" hidden>Заказ отправлен — мы уже видим его в Telegram</div>
+                        <div class="o-ok" id="sentBox" hidden>Заявка отправлена. Дождитесь подтверждения рецепта и срока.</div>
                         <div class="o-fallback" id="fallbackBox" hidden>
                             <p class="pay-note">Заказ готов. Скопируйте его и отправьте нам в Telegram — подтвердим рецепт, сроки и оплату.</p>
                             <textarea id="fbText" readonly aria-label="Текст заказа"></textarea>
                             <button type="button" class="o-copy" id="fbCopy">Скопировать заказ</button>
                         </div>
-                        <h4 id="qrTitle" style="font-family: 'Unbounded', sans-serif; font-size: 1.15rem; margin: 4px 0 10px;">Оплата по QR (СБП)</h4>
-                        <div class="qr-wrap" id="qrWrap"><img id="qrImg" src="../assets/images/qr-sbp.png" alt="QR-код для оплаты по СБП"></div>
-                        <p class="pay-note" id="payNoteSbp">Оплатите по QR с телефона через СБП. <b>В комментарии к платежу укажите номер заказа</b> — тогда мы сразу свяжем оплату и заказ.</p>
-                        <p class="pay-note" id="payAltNote" style="display:none;">Оплата после подтверждения заказа: свяжитесь с нами — согласуем рецепт, сроки и способ оплаты.</p>
+                        <p class="pay-note" id="payAltNote" >Оплата после подтверждения заказа: свяжитесь с нами — согласуем рецепт, сроки и способ оплаты.</p>
                         <div class="pay-oid">ЗАКАЗ <span id="payOid"></span></div>
                         <div class="pay-sum" id="paySum"></div>
-                        <p class="pay-note">После оплаты пришлите скриншот в Telegram — подтвердим и начнём сборку.</p>
-                        <a class="tg-pay" href="https://t.me/+79990668884" target="_blank" rel="noopener">Открыть Telegram</a>
+                        <p class="pay-note">Не оплачивайте комплект до подтверждения всех деталей. Если заявку нужно отправить вручную, скопируйте текст и отправьте его в Telegram.</p>
+                        <a class="tg-pay" id="fbTelegram" href="https://t.me/+79990668884" target="_blank" rel="noopener">Открыть Telegram</a>
                         <div class="o-nav" style="margin-top: 16px;">
                             <button type="button" class="o-back" style="flex: 1;" onclick="closePopup()">Готово</button>
                         </div>
