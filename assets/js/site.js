@@ -96,14 +96,14 @@
         function animate() {
             if (!threeInitialized) return;
             requestAnimationFrame(animate);
-            shape.rotation.x += 0.002;
-            shape.rotation.y += 0.003;
+            shape.rotation.x += 0.0006;
+            shape.rotation.y += 0.0009;
             if (!prefersReducedMotion) {
                 camera.position.x += (mouseX * 5 - camera.position.x) * 0.05;
                 camera.position.y += (mouseY * 5 - camera.position.y) * 0.05;
             }
             camera.lookAt(scene.position);
-            shape.position.y = -scrollY * 0.01;
+            shape.position.y = -Math.min(scrollY * 0.001, 4);
             particles.rotation.y = scrollY * 0.0005;
             renderer.render(scene, camera);
         }
@@ -182,17 +182,15 @@
         });
 
         // --- SCROLLTELLING ---
+        if ('IntersectionObserver' in window && !prefersReducedMotion) document.documentElement.classList.add('motion-ready');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
-                    if (entry.target.matches('.showcase-card, .review-card')) {
-                        setTimeout(() => initTilt(entry.target), 1100);
-                    }
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0, rootMargin: '0px 0px -24px 0px' });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // --- FAQ ---
@@ -593,7 +591,7 @@
                         secObs.unobserve(e.target);
                     }
                 });
-            }, { threshold: 0.12 });
+            }, { threshold: 0 });
             document.querySelectorAll('.sec').forEach(s => secObs.observe(s));
         }
 
@@ -609,7 +607,8 @@
                 if (r.bottom < -300 || r.top > vh + 300) return;
                 const center = r.top + r.height / 2 - vh / 2;
                 const speed = parseFloat(el.dataset.px) || 0;
-                el.style.transform = 'translate3d(0,' + (-center * speed).toFixed(1) + 'px,0)';
+                const offset = Math.max(-18, Math.min(18, -center * speed));
+                el.style.transform = 'translate3d(0,' + offset.toFixed(1) + 'px,0)';
             });
         }
 
