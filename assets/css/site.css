@@ -358,19 +358,15 @@
             .motion-ready .reveal.visible { opacity: 1; transform: none; }
         }
         .rw-host .rw { opacity: 1 !important; transform: none !important; }
-        .alternative-frame { border-top: 1px solid rgba(0,242,255,.18); border-bottom: 1px solid rgba(0,242,255,.18); background: rgba(16,18,26,.75); }
-        .alternative-content { max-width: 1000px; }
-        .alternative-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 28px 0; }
-        .alternative-gallery img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; background: #e8e8e8; }
-        .alternative-lifestyle { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 28px 0 16px; }
+        .alternative-gallery { margin-bottom: 28px; }
+        .alternative-gallery img { display: block; object-fit: contain; background: #e8e8e8; border-radius: 8px; }
+        .alternative-lifestyle { margin-bottom: 24px; }
         .alternative-lifestyle figure { margin: 0; min-width: 0; }
-        .alternative-lifestyle img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
-        .alternative-lifestyle figcaption { color: var(--text-muted); font-size: .95rem; padding-top: 12px; }
+        .alternative-lifestyle img { display: block; }
+        .alternative-lifestyle h3 { margin-bottom: 0; }
         .alternative-details { margin-bottom: 24px; border-top: 1px solid rgba(255,255,255,.12); border-bottom: 1px solid rgba(255,255,255,.12); }
         .alternative-details summary { padding: 18px 0; color: var(--primary); cursor: pointer; }
         .alternative-details summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
-        @media (max-width: 600px) { .alternative-lifestyle { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
-        @media (max-width: 600px) { .alternative-gallery { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
         .alternative-label { color: var(--primary); margin-bottom: 12px; font-size: .9rem; }
         .alternative-content p { max-width: 740px; margin-bottom: 20px; }
         .alternative-note { color: var(--text-muted); }

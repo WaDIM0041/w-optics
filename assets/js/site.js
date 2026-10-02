@@ -103,7 +103,7 @@
                 camera.position.y += (mouseY * 5 - camera.position.y) * 0.05;
             }
             camera.lookAt(scene.position);
-            shape.position.y = -Math.min(scrollY * 0.001, 4);
+            shape.position.y = -scrollY * 0.01;
             particles.rotation.y = scrollY * 0.0005;
             renderer.render(scene, camera);
         }
