@@ -367,25 +367,8 @@
 
             // --- сбор и оформление заказа ---
             const money = v => v.toLocaleString('ru-RU') + ' \u20BD';
-            const selectedModel = () => form.querySelector('input[name="frameModel"]:checked')?.value || 'base';
-            const defaultModelNote = document.getElementById('modelPriceNote')?.textContent;
-            function syncModelNote() {
-                const note = document.getElementById('modelPriceNote');
-                if (note) note.textContent = selectedModel() === 'base' ? defaultModelNote : 'Укажите SPH для каждого глаза. Для другой формы оправы отдельно проверим возможность сборки, размеры, комплектацию и стоимость. Цена основного комплекта к этому варианту не применяется автоматически.';
-            }
-            form.querySelectorAll('input[name="frameModel"]').forEach(input => input.addEventListener('change', syncModelNote));
-            document.querySelectorAll('[data-model-choice]').forEach(button => button.addEventListener('click', () => {
-                const input = Array.from(form.querySelectorAll('input[name="frameModel"]')).find(el => el.value === button.dataset.modelChoice);
-                if (!input) return;
-                input.checked = true;
-                syncModelNote();
-                window.openPopup();
-                input.focus();
-            }));
-            const totalLabel = o => o.total === null ? 'Уточним после проверки модели' : money(o.total);
             function collectOrder() {
                 const del = form.querySelector('input[name="delivery"]:checked');
-                const alternative = selectedModel() !== 'base';
                 return {
                     oid: 'W-' + Date.now().toString(36).toUpperCase().slice(-4) + '-' + Math.floor(10 + Math.random() * 89),
                     name: document.getElementById('name').value.trim(),
@@ -398,8 +381,7 @@
                     delivery: del ? del.value : '',
                     addr: addrGroup.hidden ? '' : addrEl.value.trim(),
                     comment: document.getElementById('comment').value.trim(),
-                    model: alternative ? 'Овальная оправа, Ozon 4652875591' : 'Основной комплект',
-                    total: alternative ? null : PRICE * qty,
+                    total: PRICE * qty,
                     consent: document.getElementById('pdConsent').checked,
                     consentTs: new Date().toISOString(),
                     page: location.href,
@@ -417,7 +399,6 @@
                 ];
                 if (o.email) rows.push(['Email', o.email]);
                 rows.push(
-                    ['Модель', o.model],
                     ['Диоптрии', o.dioUnknown ? 'не знает — нужна помощь' : 'правый ' + o.dioR + ' D'],
                     ['', o.dioUnknown ? '' : 'левый ' + o.dioL + ' D'],
                     ['Комплектов', String(o.qty)],
@@ -426,13 +407,12 @@
                 if (o.addr) rows.push(['Адрес', o.addr]);
                 if (o.comment) rows.push(['Комментарий', o.comment]);
                 let html = rows.map(r => '<div><span>' + escapeHtml(r[0]) + '</span><b>' + escapeHtml(r[1]) + '</b></div>').join('');
-                html += '<div class="o-total"><span>Итого (товары)</span><b>' + totalLabel(o) + '</b></div>';
+                html += '<div class="o-total"><span>Итого (товары)</span><b>' + money(o.total) + '</b></div>';
                 document.getElementById('oSummary').innerHTML = html;
             }
             function orderText(o) {
                 return [
                     'ЗАЯВКА ' + o.oid + ' (W OPTICS)',
-                    'Модель: ' + o.model,
                     'Имя: ' + o.name,
                     'Телефон: ' + o.phone,
                     o.email ? 'Email: ' + o.email : null,
@@ -444,7 +424,7 @@
                     o.addr ? 'Адрес: ' + o.addr : null,
                     o.comment ? 'Комментарий: ' + o.comment : null,
                     'Согласие на ПД: да, ' + o.consentTs,
-                    'Сумма (товары): ' + totalLabel(o)
+                    'Сумма (товары): ' + money(o.total)
                 ].filter(Boolean).join('\n');
             }
 
@@ -488,7 +468,7 @@
                 document.getElementById('fallbackBox').hidden = sent;
                 if (!sent) document.getElementById('fbText').value = orderText(o);
                 document.getElementById('payOid').textContent = o.oid;
-                document.getElementById('paySum').textContent = totalLabel(o);
+                document.getElementById('paySum').textContent = money(o.total);
                 // цели метрики: доставка/адрес видны на экране подтверждения
                 trackGoal(sent ? 'order_sent' : 'order_prepared');
             });

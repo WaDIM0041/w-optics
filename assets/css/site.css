@@ -358,24 +358,6 @@
             .motion-ready .reveal.visible { opacity: 1; transform: none; }
         }
         .rw-host .rw { opacity: 1 !important; transform: none !important; }
-        .alternative-gallery { margin-bottom: 28px; }
-        .alternative-gallery img { display: block; object-fit: contain; background: #e8e8e8; border-radius: 8px; }
-        .alternative-lifestyle { margin-bottom: 24px; }
-        .alternative-lifestyle figure { margin: 0; min-width: 0; }
-        .alternative-lifestyle img { display: block; }
-        .alternative-lifestyle h3 { margin-bottom: 0; }
-        .alternative-details { margin-bottom: 24px; border-top: 1px solid rgba(255,255,255,.12); border-bottom: 1px solid rgba(255,255,255,.12); }
-        .alternative-details summary { padding: 18px 0; color: var(--primary); cursor: pointer; }
-        .alternative-details summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
-        .alternative-label { color: var(--primary); margin-bottom: 12px; font-size: .9rem; }
-        .alternative-content p { max-width: 740px; margin-bottom: 20px; }
-        .alternative-note { color: var(--text-muted); }
-        .alternative-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px 28px; }
-        .alternative-actions a { color: var(--primary); text-underline-offset: 4px; }
-        .model-choice { border: 0; margin: 0 0 24px; padding: 0; min-width: 0; }
-        .model-choice legend { font-weight: 600; margin-bottom: 12px; }
-        .model-choice label { display: flex; gap: 12px; align-items: center; padding: 10px 0; cursor: pointer; }
-        .model-choice input { flex: none; width: 18px; height: 18px; accent-color: var(--primary); color-scheme: dark; }
         .showcase-grid { gap: 24px; margin-top: 32px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .showcase-card, .step-item, .review-card, .faq-item, .poleznoe-card, .price-cta { border-radius: 8px; }
         .showcase-card:hover, .showcase-card.tilt, .showcase-card.tilt:hover, .review-card.tilt, .review-card.tilt:hover { transform: none; }
