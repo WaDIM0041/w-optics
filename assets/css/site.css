@@ -276,6 +276,7 @@
   .ak-badge:hover .ak-badge__logo { opacity: 1; }
   @font-face { font-family: 'MakannaWord'; src: url('/assets/fonts/Quicksand-Light.ttf') format('truetype'); font-weight: 300; font-display: swap; }
   .ak-badge__text b { font-family: 'MakannaWord', Arial, sans-serif; font-weight: 300; letter-spacing: .02em; }
+  .ak-badge__word { display: block; height: 16px; width: auto; }
 
         @media (max-width: 768px) {
             header { padding: 10px 0; }
