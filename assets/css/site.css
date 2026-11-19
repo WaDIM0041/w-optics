@@ -274,7 +274,8 @@
 
   .ak-badge__logo { flex: none; width: 26px; height: 30px; opacity: .8; transition: opacity .2s; }
   .ak-badge:hover .ak-badge__logo { opacity: 1; }
-  .ak-badge__text b { font-family: 'Quicksand', Arial, sans-serif; font-weight: 300; letter-spacing: .02em; }
+  @font-face { font-family: 'MakannaWord'; src: url('/assets/fonts/Comfortaa-Light.ttf') format('truetype'); font-weight: 300; font-display: swap; }
+  .ak-badge__text b { font-family: 'MakannaWord', Arial, sans-serif; font-weight: 300; letter-spacing: .02em; }
 
         @media (max-width: 768px) {
             header { padding: 10px 0; }
