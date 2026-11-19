@@ -272,6 +272,10 @@
         .ak-badge__text b { color: #d8f4ff; font-size: .78rem; font-weight: 600; letter-spacing: .01em; }
         .ak-badge:hover .ak-badge__text b { color: var(--primary); }
 
+  .ak-badge__logo { flex: none; width: 26px; height: 30px; opacity: .8; transition: opacity .2s; }
+  .ak-badge:hover .ak-badge__logo { opacity: 1; }
+  .ak-badge__text b { font-family: 'Quicksand', Arial, sans-serif; font-weight: 300; letter-spacing: .02em; }
+
         @media (max-width: 768px) {
             header { padding: 10px 0; }
             .logo { height: 28px; }
